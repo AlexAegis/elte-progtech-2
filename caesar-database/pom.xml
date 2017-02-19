@@ -10,6 +10,18 @@
     <name>caesar-database</name>
     <url>https://github.com/AlexAegis</url>
 
+    <repositories>
+        <repository>
+            <id>GitHub.AlexAegis</id>
+            <name>maven-repository</name>
+            <url>https://raw.github.com/AlexAegis/maven-repository/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
 <dependencies>
     <dependency>
         <groupId>junit</groupId>
@@ -36,6 +48,11 @@
         <groupId>org.jasypt</groupId>
         <artifactId>jasypt</artifactId>
         <version>1.9.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.easymock</groupId>
+        <artifactId>easymock</artifactId>
+        <version>3.4</version>
     </dependency>
     <dependency>
         <groupId>com.github.alexaegis</groupId>
