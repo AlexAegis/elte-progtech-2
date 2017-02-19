@@ -1,7 +1,8 @@
 package com.alexaegis.progtech.window;
 
 import com.alexaegis.progtech.logic.controller.KeyboardController;
-import com.alexaegis.progtech.window.panels.ContentPane;
+import com.alexaegis.progtech.window.panels.*;
+import com.alexaegis.progtech.window.panels.MenuBar;
 import com.github.alexaegis.swing.ResizeableElement;
 
 import javax.swing.*;
@@ -43,6 +44,7 @@ public final class Window extends JFrame implements ComponentListener {
         setResizable(resizable);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setJMenuBar(new MenuBar());
         setContentPane(new ContentPane());
         setVisible(true);
         addComponentListener(this);

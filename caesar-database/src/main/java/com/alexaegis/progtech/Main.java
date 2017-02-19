@@ -21,6 +21,7 @@ public final class Main {
     public static final StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
     public static Properties dbProperties = new EncryptableProperties(encryptor);
     public static Properties sshProperties = new EncryptableProperties(encryptor);
+    public static Connector connector;
 
     @Parameter(names = {"--dbdriver", "-dbd"})                                  private static String dbdriver;
     @Parameter(names = {"--jdbcdriver", "-jdbc"})                               private static String jdbcdriver;
@@ -32,6 +33,7 @@ public final class Main {
     @Parameter(names = {"--dbschema", "-dbsch", "-dbs", "--dbname", "-dbn"})    private static String dbschema;
     @Parameter(names = {"--dbusername", "-dbun", "--dbuser", "-dbu"})           private static String dbusername;
     @Parameter(names = {"--dbpassword", "-dbpw"})                               private static String dbpassword;
+    @Parameter(names = {"--dbrefreshinterval", "-dbri"})                        private static String dbrefreshinterval;
     @Parameter(names = {"--sshhost", "-sshh"})                                  private static String sshhost;
     @Parameter(names = {"--sshport", "-sshp"})                                  private static String sshport;
     @Parameter(names = {"--sshusername", "-sshun", "--sshuser", "-sshu"})       private static String sshusername;
@@ -42,7 +44,8 @@ public final class Main {
         encryptor.setPassword(Integer.toString(new Random().nextInt(Integer.MAX_VALUE)));
         new JCommander(new Main(), args);
         updateProperties();
-        new Connector().start();
+        connector = new Connector();
+        connector.start();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             EventQueue.invokeLater(Window::new);
@@ -55,21 +58,22 @@ public final class Main {
         try {
             dbProperties.load(Main.class.getClassLoader().getResourceAsStream(dbprops));
             sshProperties.load(Main.class.getClassLoader().getResourceAsStream(sshprops));
-            if(dbdriver != null)    dbProperties.setProperty("driver", dbdriver);
-            if(jdbcdriver != null)  dbProperties.setProperty("jdbcdriver", jdbcdriver);
-            if(dbprotocol != null)  dbProperties.setProperty("protocol", dbprotocol);
-            if(dbrhost != null)     dbProperties.setProperty("rhost", dbrhost);
-            if(dbrport != null)     dbProperties.setProperty("rport", dbrport);
-            if(dblhost != null)     dbProperties.setProperty("lhost ", dblhost);
-            if(dblport != null)     dbProperties.setProperty("lport", dblport);
-            if(dbschema != null)    dbProperties.setProperty("schema", dbschema);
-            if(dbusername != null)  dbProperties.setProperty("username", dbusername);
-            if(dbpassword != null)  dbProperties.setProperty("password", encryptor.encrypt(dbpassword));
-            if(sshhost != null)     sshProperties.setProperty("host", sshhost);
-            if(sshport != null)     sshProperties.setProperty("port", sshport);
-            if(sshusername != null) sshProperties.setProperty("username", sshusername);
-            if(sshpassword != null) sshProperties.setProperty("password", encryptor.encrypt(sshpassword));
-            if(usessh != null)      sshProperties.setProperty("usessh", usessh);
+            if(dbdriver != null)            dbProperties.setProperty("driver", dbdriver);
+            if(jdbcdriver != null)          dbProperties.setProperty("jdbcdriver", jdbcdriver);
+            if(dbprotocol != null)          dbProperties.setProperty("protocol", dbprotocol);
+            if(dbrhost != null)             dbProperties.setProperty("rhost", dbrhost);
+            if(dbrport != null)             dbProperties.setProperty("rport", dbrport);
+            if(dblhost != null)             dbProperties.setProperty("lhost ", dblhost);
+            if(dblport != null)             dbProperties.setProperty("lport", dblport);
+            if(dbschema != null)            dbProperties.setProperty("schema", dbschema);
+            if(dbusername != null)          dbProperties.setProperty("username", dbusername);
+            if(dbpassword != null)          dbProperties.setProperty("password", encryptor.encrypt(dbpassword));
+            if(dbrefreshinterval != null)   dbProperties.setProperty("refreshinterval", dbrefreshinterval);
+            if(sshhost != null)             sshProperties.setProperty("host", sshhost);
+            if(sshport != null)             sshProperties.setProperty("port", sshport);
+            if(sshusername != null)         sshProperties.setProperty("username", sshusername);
+            if(sshpassword != null)         sshProperties.setProperty("password", encryptor.encrypt(sshpassword));
+            if(usessh != null)              sshProperties.setProperty("usessh", usessh);
         } catch (IOException e) {
             e.printStackTrace();
         }

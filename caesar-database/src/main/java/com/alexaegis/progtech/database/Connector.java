@@ -3,7 +3,6 @@ package com.alexaegis.progtech.database;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.sql.*;
 import java.util.logging.Logger;
@@ -24,6 +23,7 @@ public final class Connector extends Thread implements Runnable {
     private final String dbSchema = dbProperties.getProperty("schema");
     private final String dbUsername = dbProperties.getProperty("username");
     private final String dbPassword = dbProperties.getProperty("password");
+    private final int dbRefreshInterval = Integer.parseInt(dbProperties.getProperty("refreshinterval"));
     private final String sshHost = sshProperties.getProperty("host");
     private final int sshPort = Integer.parseInt(sshProperties.getProperty("port"));
     private final String sshUsername = sshProperties.getProperty("username");
@@ -84,6 +84,10 @@ public final class Connector extends Thread implements Runnable {
         }
     }
 
+    private void refresh() {
+        logger.info("Database refreshed");
+    }
+
     public void disconnect() {
         try {
             session.disconnect();
@@ -99,12 +103,18 @@ public final class Connector extends Thread implements Runnable {
         connect();
         while(running) {
             try {
-                sleep(1000 * 2);
+                sleep(1000 * dbRefreshInterval);
+                refresh();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         disconnect();
+    }
+
+    public void stopConnection() {
+        logger.info("Connection stopped");
+        running = false;
     }
 
     @Override
