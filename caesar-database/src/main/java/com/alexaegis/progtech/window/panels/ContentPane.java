@@ -5,16 +5,24 @@ import com.github.alexaegis.swing.ResizeableElement;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
+import static com.alexaegis.progtech.Main.connector;
 import static com.alexaegis.progtech.window.Window.displayProperties;
+import static java.lang.Thread.sleep;
 
 public class ContentPane extends JLayeredPane implements ResizeableElement {
 
     public ContentPane() {
         setSize(Integer.parseInt(displayProperties.getProperty("width")), Integer.parseInt(displayProperties.getProperty("height")));
-        //int i = (int) displayProperties.get("width");
-        //System.out.println(i);
-
+        new Thread(() -> {
+            try {
+                while(!connector.isConnected()) sleep(250);
+                add(new DataGrid());
+            } catch (InterruptedException | SQLException e) {
+                e.printStackTrace();
+            }
+        }).start();
         setLayout(null);
         setBackground(new Color(130, 162, 182, 255));
     }

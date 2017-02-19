@@ -24,6 +24,7 @@ public final class Window extends JFrame implements ComponentListener {
     private String title = "Title";
     private boolean resizable = true;
     private boolean antialiasing = true;
+    public static ContentPane windowContent;
 
     {
         try {
@@ -45,7 +46,8 @@ public final class Window extends JFrame implements ComponentListener {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setJMenuBar(new MenuBar());
-        setContentPane(new ContentPane());
+        windowContent = new ContentPane();
+        setContentPane(windowContent);
         setVisible(true);
         addComponentListener(this);
         addKeyListener(keyboardController);

@@ -1,5 +1,7 @@
 package com.alexaegis.progtech.database;
 
+import com.github.alexaegis.swing.ResizeableElement;
+import com.github.alexaegis.swing.Updatable;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
@@ -10,6 +12,8 @@ import java.util.logging.Logger;
 import static com.alexaegis.progtech.Main.dbProperties;
 import static com.alexaegis.progtech.Main.encryptor;
 import static com.alexaegis.progtech.Main.sshProperties;
+import static com.alexaegis.progtech.window.Window.windowContent;
+import static com.github.alexaegis.swing.ComponentTools.findComponents;
 
 public final class Connector extends Thread implements Runnable {
 
@@ -38,6 +42,7 @@ public final class Connector extends Thread implements Runnable {
     private Connection connection;
     private Logger logger = Logger.getLogger(this.getClass().getName());
     private boolean running = false;
+    private boolean connected = false;
 
     public Connector() {
         try {
@@ -59,6 +64,7 @@ public final class Connector extends Thread implements Runnable {
                 session.setPortForwardingL(dbLocalPort, dbRemoteHost, dbRemotePort);
             }
             connection = DriverManager.getConnection(dbLocalUrl, dbUsername, encryptor.decrypt(dbPassword));
+            connected = true;
         } catch (JSchException | SQLException e) {
             e.printStackTrace();
         }
@@ -85,6 +91,7 @@ public final class Connector extends Thread implements Runnable {
     }
 
     private void refresh() {
+        if(windowContent != null) findComponents(windowContent, Updatable.class).forEach(Updatable::update);
         logger.info("Database refreshed");
     }
 
@@ -92,6 +99,7 @@ public final class Connector extends Thread implements Runnable {
         try {
             session.disconnect();
             connection.close();
+            connected = false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -120,5 +128,9 @@ public final class Connector extends Thread implements Runnable {
     @Override
     public String toString() {
         return dbLocalUrl;
+    }
+
+    public boolean isConnected() {
+        return connected;
     }
 }
