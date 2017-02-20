@@ -70,24 +70,8 @@ public final class Connector extends Thread implements Runnable {
         }
     }
 
-    public ResultSet query(String query) throws SQLException {
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery(query);
-        //st.close();
-        return rs;
-    }
-
-    public void printResultSet(ResultSet resultSet) throws SQLException {
-        ResultSetMetaData rsmd = resultSet.getMetaData();
-        int columnsNumber = rsmd.getColumnCount();
-        while (resultSet.next()) {
-            for (int i = 1; i <= columnsNumber; i++) {
-                if (i > 1) System.out.print(",  ");
-                String columnValue = resultSet.getString(i);
-                System.out.print(columnValue + " " + rsmd.getColumnName(i));
-            }
-            System.out.println("");
-        }
+    public Connection getConnection() {
+        return connection;
     }
 
     private void refresh() {

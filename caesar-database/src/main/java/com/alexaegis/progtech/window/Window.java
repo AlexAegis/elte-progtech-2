@@ -1,5 +1,6 @@
 package com.alexaegis.progtech.window;
 
+import com.alexaegis.progtech.database.Connector;
 import com.alexaegis.progtech.logic.controller.KeyboardController;
 import com.alexaegis.progtech.window.panels.*;
 import com.alexaegis.progtech.window.panels.MenuBar;
@@ -39,14 +40,14 @@ public final class Window extends JFrame implements ComponentListener {
         }
     }
 
-    public Window() throws HeadlessException {
+    public Window(Connector connector) throws HeadlessException {
         setTitle(title);
         setSize(width + 16, height);
         setResizable(resizable);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setJMenuBar(new MenuBar());
-        windowContent = new ContentPane();
+        windowContent = new ContentPane(connector);
         setContentPane(windowContent);
         setVisible(true);
         addComponentListener(this);
