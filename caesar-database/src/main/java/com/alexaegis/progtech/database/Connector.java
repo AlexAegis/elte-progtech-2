@@ -1,6 +1,5 @@
 package com.alexaegis.progtech.database;
 
-import com.github.alexaegis.swing.ResizeableElement;
 import com.github.alexaegis.swing.Updatable;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
@@ -10,9 +9,8 @@ import java.sql.*;
 import java.util.logging.Logger;
 
 import static com.alexaegis.progtech.Main.dbProperties;
-import static com.alexaegis.progtech.Main.encryptor;
 import static com.alexaegis.progtech.Main.sshProperties;
-import static com.alexaegis.progtech.window.Window.windowContent;
+import static com.alexaegis.progtech.window.MainWindow.windowContent;
 import static com.github.alexaegis.swing.ComponentTools.findComponents;
 
 public final class Connector extends Thread implements Runnable {
@@ -26,13 +24,10 @@ public final class Connector extends Thread implements Runnable {
     private final int dbLocalPort = Integer.parseInt(dbProperties.getProperty("lport"));
     private final String dbSchema = dbProperties.getProperty("schema");
     private final String dbUsername = dbProperties.getProperty("username");
-    private final String dbPassword = dbProperties.getProperty("password");
     private final int dbRefreshInterval = Integer.parseInt(dbProperties.getProperty("refreshinterval"));
     private final String sshHost = sshProperties.getProperty("host");
     private final int sshPort = Integer.parseInt(sshProperties.getProperty("port"));
     private final String sshUsername = sshProperties.getProperty("username");
-    private final String sshPassword = sshProperties.getProperty("password");
-    private final boolean usessh = Boolean.parseBoolean(sshProperties.getProperty("usessh"));
 
     private final String dbRemoteUrl = dbProtocol + ":" + dbDriver + "://" + dbRemoteHost + ":" + dbRemotePort + "/" + dbSchema;
     private final String dbLocalUrl = dbProtocol + ":" + dbDriver + "://" + dbLocalHost + ":" + dbLocalPort + "/" + dbSchema;
@@ -45,26 +40,25 @@ public final class Connector extends Thread implements Runnable {
     private boolean connected = false;
 
     public Connector() {
+
+    }
+
+    public void connect(boolean usessh) {
+        System.out.println("CONNECT USING" + usessh);
         try {
             if(usessh) {
                 session = sch.getSession(sshUsername, sshHost, sshPort);
-                session.setPassword(encryptor.decrypt(sshPassword));
+                session.setPassword(String.copyValueOf((char[]) sshProperties.getPropertyObject("password")));
                 session.setConfig("StrictHostKeyChecking", "no");
-            }
-        } catch (JSchException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void connect() {
-        try {
-            if(usessh) {
                 session.connect();
                 logger.info("SSH Connected to " + session.getHost());
                 session.setPortForwardingL(dbLocalPort, dbRemoteHost, dbRemotePort);
             }
-            connection = DriverManager.getConnection(dbLocalUrl, dbUsername, encryptor.decrypt(dbPassword));
+            connection = DriverManager.getConnection(dbLocalUrl,
+                    dbUsername,
+                    String.copyValueOf((char[]) dbProperties.getPropertyObject("password")));
             connected = true;
+            run();
         } catch (JSchException | SQLException e) {
             e.printStackTrace();
         }
@@ -92,7 +86,6 @@ public final class Connector extends Thread implements Runnable {
     @Override
     public void run() {
         running = true;
-        connect();
         while(running) {
             try {
                 sleep(1000 * dbRefreshInterval);

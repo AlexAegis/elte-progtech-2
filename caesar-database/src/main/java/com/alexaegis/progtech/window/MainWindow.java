@@ -15,7 +15,7 @@ import java.util.Properties;
 
 import static com.github.alexaegis.swing.ComponentTools.findComponents;
 
-public final class Window extends JFrame implements ComponentListener {
+public final class MainWindow extends JFrame implements ComponentListener {
 
     public static KeyboardController keyboardController = new KeyboardController();
     public static Properties displayProperties = new Properties();
@@ -30,9 +30,9 @@ public final class Window extends JFrame implements ComponentListener {
     {
         try {
             displayProperties.load(this.getClass().getClassLoader().getResourceAsStream(displayprops));
-            height = Integer.parseInt(displayProperties.getProperty("height"));
-            width = Integer.parseInt(displayProperties.getProperty("width"));
-            title = displayProperties.getProperty("title");
+            height = Integer.parseInt(displayProperties.getProperty("main.height"));
+            width = Integer.parseInt(displayProperties.getProperty("main.width"));
+            title = displayProperties.getProperty("main.title");
             resizable = Boolean.parseBoolean(displayProperties.getProperty("resizable"));
             antialiasing = Boolean.parseBoolean(displayProperties.getProperty("antialiasing"));
         } catch (IOException e) {
@@ -40,21 +40,22 @@ public final class Window extends JFrame implements ComponentListener {
         }
     }
 
-    public Window(Connector connector) throws HeadlessException {
+    public MainWindow(Connector connector) throws HeadlessException {
         setTitle(title);
-        setSize(width + 16, height);
+        setSize(width, height);
         setResizable(resizable);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setJMenuBar(new MenuBar());
         windowContent = new ContentPane(connector);
         setContentPane(windowContent);
-        setVisible(true);
         addComponentListener(this);
         addKeyListener(keyboardController);
-        this.getRootPane().setFocusable(true);
-        this.getRootPane().requestFocus();
+        getRootPane().setFocusable(true);
         requestFocus();
+        setVisible(true);
+        revalidate();
+        repaint();
     }
 
     @Override
@@ -66,8 +67,8 @@ public final class Window extends JFrame implements ComponentListener {
 
     @Override
     public void componentResized(ComponentEvent e) {
-        displayProperties.setProperty("width", Integer.toString(getWidth() - 16));
-        displayProperties.setProperty("height", Integer.toString(getHeight() - 32));
+        displayProperties.setProperty("main.width", Integer.toString(getWidth() - 16));
+        displayProperties.setProperty("main.height", Integer.toString(getHeight() - 32));
         findComponents(this, ResizeableElement.class).forEach(ResizeableElement::onResize);
         revalidate();
         repaint();

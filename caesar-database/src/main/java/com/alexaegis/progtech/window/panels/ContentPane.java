@@ -9,13 +9,13 @@ import java.awt.*;
 import java.sql.SQLException;
 
 import static com.alexaegis.progtech.Main.dbProperties;
-import static com.alexaegis.progtech.window.Window.displayProperties;
+import static com.alexaegis.progtech.window.MainWindow.displayProperties;
 import static java.lang.Thread.sleep;
 
 public class ContentPane extends JLayeredPane implements ResizeableElement {
 
     public ContentPane(Connector connector) {
-        setSize(Integer.parseInt(displayProperties.getProperty("width")), Integer.parseInt(displayProperties.getProperty("height")));
+        setSize(Integer.parseInt(displayProperties.getProperty("main.width")), Integer.parseInt(displayProperties.getProperty("main.height")));
         new Thread(() -> {
             try {
                 while(!connector.isConnected()) sleep(250);
@@ -33,7 +33,7 @@ public class ContentPane extends JLayeredPane implements ResizeableElement {
 
     @Override
     public void onResize() {
-        setSize(Integer.parseInt(displayProperties.getProperty("width")), Integer.parseInt(displayProperties.getProperty("height")));
+        setSize(Integer.parseInt(displayProperties.getProperty("main.width")), Integer.parseInt(displayProperties.getProperty("main.height")));
         revalidate();
         repaint();
     }

@@ -1,7 +1,8 @@
 package com.alexaegis.progtech.window.panels;
 
+import com.alexaegis.progtech.window.ConnectionWindow;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 public class MenuBar extends JMenuBar {
 
@@ -32,9 +33,8 @@ public class MenuBar extends JMenuBar {
 
         miExit.setToolTipText("Exit application");
 
-        miExit.addActionListener((ActionEvent event) -> {
-            System.exit(0);
-        });
+        miExit.addActionListener(e -> System.exit(0));
+        miConnect.addActionListener(e -> new ConnectionWindow());
 
         fileMenu.add(miConnect);
         fileMenu.add(miUpdate);
