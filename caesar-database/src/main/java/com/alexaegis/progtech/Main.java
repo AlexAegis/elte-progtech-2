@@ -51,8 +51,6 @@ public final class Main {
         new JCommander(main, args);
         main.updateProperties();
         connector = new Connector();
-        System.out.println(dbProperties.getProperty("usessh"));
-        System.out.println(dbProperties.getProperty("connectbydefault"));
         if(Boolean.parseBoolean(dbProperties.getProperty("connectbydefault")))
             new Thread(() -> connector.connect(Boolean.parseBoolean(sshProperties.getProperty("usessh")))).start();
         try {

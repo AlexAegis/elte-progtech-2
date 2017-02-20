@@ -44,7 +44,6 @@ public final class Connector extends Thread implements Runnable {
     }
 
     public void connect(boolean usessh) {
-        System.out.println("CONNECT USING" + usessh);
         try {
             if(usessh) {
                 session = sch.getSession(sshUsername, sshHost, sshPort);
