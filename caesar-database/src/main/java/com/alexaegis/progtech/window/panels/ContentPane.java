@@ -19,7 +19,7 @@ public class ContentPane extends JLayeredPane implements ResizeableElement {
         new Thread(() -> {
             try {
                 while(!connector.isConnected()) sleep(250);
-                add(new ScrollPane(connector, dbProperties.getProperty("tablenames").split(";")[2]));
+                add(new ScrollPane(connector, dbProperties.getProperty("tablenames").split(";")[0]));
             } catch (InterruptedException | SQLException e) {
                 e.printStackTrace();
             }

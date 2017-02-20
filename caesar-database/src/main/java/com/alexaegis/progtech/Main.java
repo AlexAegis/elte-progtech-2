@@ -45,8 +45,8 @@ public final class Main {
     @Parameter(names = {"--usessh", "-us"})                                     private String usessh;
 
     public static void main(String[] args) throws SQLException {
-        String[] clipboard = readFromClipBoard().split(" ");
-        if(Arrays.stream(clipboard).noneMatch(String::isEmpty)) args = clipboard;
+        //String[] clipboard = readFromClipBoard().split(" ");
+        //if(Arrays.stream(clipboard).noneMatch(String::isEmpty)) args = clipboard;
         Main main = new Main();
         new JCommander(main, args);
         main.updateProperties();
