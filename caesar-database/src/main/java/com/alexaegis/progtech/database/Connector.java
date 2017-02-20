@@ -57,6 +57,7 @@ public final class Connector extends Thread implements Runnable {
             connection = DriverManager.getConnection(dbLocalUrl,
                     dbUsername,
                     String.copyValueOf((char[]) dbProperties.getPropertyObject("password")));
+            logger.info("Database Connected to " + connection.getMetaData().getURL());
             connected = true;
             run();
         } catch (JSchException | SQLException e) {
@@ -68,13 +69,15 @@ public final class Connector extends Thread implements Runnable {
         return connection;
     }
 
-    private void refresh() {
+    public void refresh() {
         if(windowContent != null) findComponents(windowContent, Updatable.class).forEach(Updatable::update);
         logger.info("Database refreshed");
     }
 
     public void disconnect() {
         try {
+            running = false;
+            logger.info("Connection stopped");
             session.disconnect();
             connection.close();
             connected = false;
@@ -89,17 +92,11 @@ public final class Connector extends Thread implements Runnable {
         while(running) {
             try {
                 sleep(1000 * dbRefreshInterval);
-                refresh();
+                if(running) refresh();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        disconnect();
-    }
-
-    public void stopConnection() {
-        logger.info("Connection stopped");
-        running = false;
     }
 
     @Override
@@ -109,5 +106,9 @@ public final class Connector extends Thread implements Runnable {
 
     public boolean isConnected() {
         return connected;
+    }
+
+    public boolean isRunning() {
+        return running;
     }
 }

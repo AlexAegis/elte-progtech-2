@@ -8,14 +8,14 @@ import java.util.stream.Collectors;
 
 public class Cache implements Updatable {
 
-    private Connection connection;
+    private Connector connector;
     private Vector<String> columnNames = new Vector<>();
     private Vector<Vector<Object>> data;
     private String tableName;
 
-    public Cache(Connection connection, String tableName) {
+    public Cache(Connector connector, String tableName) {
         this.tableName = tableName;
-        this.connection = connection;
+        this.connector = connector;
         update();
     }
 
@@ -29,7 +29,7 @@ public class Cache implements Updatable {
 
     @Override
     public void update() {
-        try(Statement statement = connection.createStatement()) {
+        try(Statement statement = connector.getConnection().createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tableName);
             Vector<String> columnNames = new Vector<>();
             for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {

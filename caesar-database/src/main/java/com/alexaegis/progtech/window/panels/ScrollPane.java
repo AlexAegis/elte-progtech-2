@@ -18,10 +18,9 @@ public class ScrollPane extends JScrollPane {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        DataGrid dataGrid = new DataGrid(connector.getConnection(), tableName);
+        DataGrid dataGrid = new DataGrid(connector, tableName);
         setViewportView(dataGrid);
         EventQueue.invokeLater(() -> setSize(getParent().getWidth(), getParent().getHeight()));
-
         setVisible(true);
         revalidate();
         repaint();

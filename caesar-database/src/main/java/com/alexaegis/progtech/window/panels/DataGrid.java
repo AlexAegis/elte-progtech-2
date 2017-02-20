@@ -1,13 +1,13 @@
 package com.alexaegis.progtech.window.panels;
 
 import com.alexaegis.progtech.database.Cache;
+import com.alexaegis.progtech.database.Connector;
 import com.github.alexaegis.swing.Updatable;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 
@@ -15,10 +15,10 @@ public class DataGrid extends JTable implements Updatable {
 
     private Cache cache;
 
-    public DataGrid(Connection connection, String tableName) throws SQLException {
+    public DataGrid(Connector connector, String tableName) throws SQLException {
         setLayout(new BorderLayout());
         setBounds(0,0, 200, 200);
-        cache = new Cache(connection, tableName);
+        cache = new Cache(connector, tableName);
         setModel(new DefaultTableModel(cache.getData(), cache.getColumnNames()));
         setVisible(true);
         revalidate();
