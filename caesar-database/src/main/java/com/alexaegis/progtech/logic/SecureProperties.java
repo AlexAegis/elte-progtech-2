@@ -18,4 +18,16 @@ public class SecureProperties extends Properties {
     public synchronized Object setPropertyObject(String key, Object value) {
         return put(key, value);
     }
+
+    public void destroyPasswordProperty(String key) {
+        try {
+            char[] chars = (char[]) getPropertyObject(key);
+            for (int i = 0; i < chars.length; i++) {
+                chars[i] = '0';
+            }
+            setPropertyObject(key, new Object());
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+    }
 }

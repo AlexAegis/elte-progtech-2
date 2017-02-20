@@ -10,6 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
+
+import static com.github.alexaegis.clipboard.ClipBoardReader.readFromClipBoard;
 
 public final class Main {
 
@@ -42,13 +45,16 @@ public final class Main {
     @Parameter(names = {"--usessh", "-us"})                                     private String usessh;
 
     public static void main(String[] args) throws SQLException {
+        String[] clipboard = readFromClipBoard().split(" ");
+        if(Arrays.stream(clipboard).noneMatch(String::isEmpty)) args = clipboard;
         Main main = new Main();
         new JCommander(main, args);
         main.updateProperties();
         connector = new Connector();
         System.out.println(dbProperties.getProperty("usessh"));
         System.out.println(dbProperties.getProperty("connectbydefault"));
-        if(Boolean.parseBoolean(dbProperties.getProperty("connectbydefault"))) new Thread(() -> connector.connect(Boolean.parseBoolean(sshProperties.getProperty("usessh")))).start();
+        if(Boolean.parseBoolean(dbProperties.getProperty("connectbydefault")))
+            new Thread(() -> connector.connect(Boolean.parseBoolean(sshProperties.getProperty("usessh")))).start();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             EventQueue.invokeLater(() -> new MainWindow(connector));

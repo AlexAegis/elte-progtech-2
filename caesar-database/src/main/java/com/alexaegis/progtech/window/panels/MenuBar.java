@@ -16,16 +16,6 @@ public class MenuBar extends JMenuBar {
 
         JMenu fileMenu = new JMenu("Database");
 
-        /*JMenu impMenu = new JMenu("Import");
-
-        JMenuItem newsfMi = new JMenuItem("Import newsfeed list...");
-        JMenuItem bookmMi = new JMenuItem("Import bookmarks...");
-        JMenuItem mailMi = new JMenuItem("Import mail...");
-
-        impMenu.add(newsfMi);
-        impMenu.add(bookmMi);
-        impMenu.add(mailMi);*/
-
         JMenuItem miConnect = new JMenuItem("Connect", iconBox);
         JMenuItem miDisconnect = new JMenuItem("Disconnect", iconStop);
         JMenuItem miUpdate = new JMenuItem("Update", iconBoxDownload);
@@ -35,12 +25,15 @@ public class MenuBar extends JMenuBar {
 
         miExit.setToolTipText("Exit application");
 
-        miExit.addActionListener(e -> System.exit(0));
         miConnect.addActionListener(e -> new ConnectionWindow());
+        miDisconnect.addActionListener(e -> Main.connector.disconnect());
         miUpdate.addActionListener(e -> {
             if(Main.connector.isRunning()) Main.connector.refresh();
         });
-        miDisconnect.addActionListener(e -> Main.connector.disconnect());
+        miExit.addActionListener(e -> {
+            Main.connector.disconnect();
+            System.exit(0);
+        });
 
         fileMenu.add(miConnect);
         fileMenu.add(miDisconnect);

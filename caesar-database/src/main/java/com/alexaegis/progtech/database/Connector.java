@@ -49,6 +49,7 @@ public final class Connector extends Thread implements Runnable {
             if(usessh) {
                 session = sch.getSession(sshUsername, sshHost, sshPort);
                 session.setPassword(String.copyValueOf((char[]) sshProperties.getPropertyObject("password")));
+                sshProperties.destroyPasswordProperty("password");
                 session.setConfig("StrictHostKeyChecking", "no");
                 session.connect();
                 logger.info("SSH Connected to " + session.getHost());
@@ -57,6 +58,7 @@ public final class Connector extends Thread implements Runnable {
             connection = DriverManager.getConnection(dbLocalUrl,
                     dbUsername,
                     String.copyValueOf((char[]) dbProperties.getPropertyObject("password")));
+            dbProperties.destroyPasswordProperty("password");
             logger.info("Database Connected to " + connection.getMetaData().getURL());
             connected = true;
             run();
