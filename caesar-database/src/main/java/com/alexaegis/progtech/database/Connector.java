@@ -6,7 +6,9 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 import java.sql.*;
+import java.util.Arrays;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static com.alexaegis.progtech.Main.dbProperties;
 import static com.alexaegis.progtech.Main.sshProperties;
@@ -53,6 +55,8 @@ public final class Connector extends Thread implements Runnable {
                 session.connect();
                 logger.info("SSH Connected to " + session.getHost());
                 session.setPortForwardingL(dbLocalPort, dbRemoteHost, dbRemotePort);
+                logger.info("Port forwarded from " + dbRemoteHost + ":" + dbRemotePort
+                + " to " + dbLocalHost + ":" + dbLocalPort);
             }
             connection = DriverManager.getConnection(dbLocalUrl,
                     dbUsername,

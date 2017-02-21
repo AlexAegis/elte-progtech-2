@@ -8,15 +8,13 @@ import java.util.stream.Collectors;
 
 public class Cache implements Updatable {
 
-    private Connector connector;
-    private Vector<String> columnNames = new Vector<>();
-    private Vector<Vector<Object>> data;
-    private String tableName;
+    protected Connector connector;
+    protected Vector<String> columnNames = new Vector<>();
+    protected Vector<Vector<Object>> data;
+    protected String query;
 
-    public Cache(Connector connector, String tableName) {
-        this.tableName = tableName;
+    public Cache(Connector connector) {
         this.connector = connector;
-        update();
     }
 
     public Vector<Vector<Object>> getData() {
@@ -27,10 +25,14 @@ public class Cache implements Updatable {
         return columnNames;
     }
 
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
     @Override
     public void update() {
         try(Statement statement = connector.getConnection().createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + tableName);
+            ResultSet resultSet = statement.executeQuery(query);
             Vector<String> columnNames = new Vector<>();
             for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
                 columnNames.add(resultSet.getMetaData().getColumnName(i));

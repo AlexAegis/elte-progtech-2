@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
-import static com.alexaegis.progtech.Main.dbProperties;
 import static com.alexaegis.progtech.window.MainWindow.displayProperties;
 import static java.lang.Thread.sleep;
 
@@ -19,7 +18,7 @@ public class ContentPane extends JLayeredPane implements ResizeableElement {
         new Thread(() -> {
             try {
                 while(!connector.isConnected()) sleep(250);
-                add(new ScrollPane(connector, dbProperties.getProperty("tablenames").split(";")[0]));
+                add(new ScrollPane(connector));
             } catch (InterruptedException | SQLException e) {
                 e.printStackTrace();
             }

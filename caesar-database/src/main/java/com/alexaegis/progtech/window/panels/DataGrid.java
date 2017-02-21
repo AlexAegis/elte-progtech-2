@@ -2,6 +2,7 @@ package com.alexaegis.progtech.window.panels;
 
 import com.alexaegis.progtech.database.Cache;
 import com.alexaegis.progtech.database.Connector;
+import com.alexaegis.progtech.database.MovieCache;
 import com.github.alexaegis.swing.ResizeableElement;
 import com.github.alexaegis.swing.Updatable;
 
@@ -18,13 +19,13 @@ import static com.alexaegis.progtech.window.MainWindow.displayProperties;
 
 public class DataGrid extends JTable implements Updatable, ResizeableElement {
 
-    private Cache cache;
+    private MovieCache movieCache;
 
-    public DataGrid(Connector connector, String tableName) throws SQLException {
+    public DataGrid(Connector connector) throws SQLException {
         setLayout(new BorderLayout());
         setSize(Integer.parseInt(displayProperties.getProperty("main.width")), Integer.parseInt(displayProperties.getProperty("main.height")));
-        cache = new Cache(connector, tableName);
-        setModel(new DefaultTableModel(cache.getData(), cache.getColumnNames()));
+        movieCache = new MovieCache(connector);
+        setModel(new DefaultTableModel(movieCache.getData(), movieCache.getColumnNames()));
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(getModel());
         setRowSorter(sorter);
@@ -42,12 +43,12 @@ public class DataGrid extends JTable implements Updatable, ResizeableElement {
 
     @Override
     public void update() {
-        cache.update();
-        ((DefaultTableModel) getModel()).setRowCount(cache.getData().size());
-        ((DefaultTableModel) getModel()).setColumnCount(cache.getColumnNames().size());
-        for (int i = 0; i < cache.getColumnNames().size(); i++)
-            for (int j = 0; j < cache.getData().size(); j++)
-                getModel().setValueAt(cache.getData().get(j).get(i), j, i);
+        movieCache.update();
+        ((DefaultTableModel) getModel()).setRowCount(movieCache.getData().size());
+        ((DefaultTableModel) getModel()).setColumnCount(movieCache.getColumnNames().size());
+        for (int i = 0; i < movieCache.getColumnNames().size(); i++)
+            for (int j = 0; j < movieCache.getData().size(); j++)
+                getModel().setValueAt(movieCache.getData().get(j).get(i), j, i);
         ((AbstractTableModel) getModel()).fireTableDataChanged();
         revalidate();
         repaint();

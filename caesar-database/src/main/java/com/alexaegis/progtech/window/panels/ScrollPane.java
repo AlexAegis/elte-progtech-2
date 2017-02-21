@@ -13,13 +13,13 @@ import static java.lang.Thread.sleep;
 
 public class ScrollPane extends JScrollPane implements ResizeableElement {
 
-    public ScrollPane(Connector connector, String tableName) throws SQLException {
+    public ScrollPane(Connector connector) throws SQLException {
         try {
             while(!connector.isConnected()) sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        DataGrid dataGrid = new DataGrid(connector, tableName);
+        DataGrid dataGrid = new DataGrid(connector);
         setViewportView(dataGrid);
         setSize(Integer.parseInt(displayProperties.getProperty("main.width")), Integer.parseInt(displayProperties.getProperty("main.height")));
         setVisible(true);
