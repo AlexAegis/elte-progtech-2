@@ -51,7 +51,8 @@ public class MovieCache extends Cache {
                 for(int j = 0; j < super.getData().size(); j++) {
                     directors.add(new Person((int) super.getData().get(j).get(0),
                             (String) super.getData().get(j).get(1),
-                            (Date) super.getData().get(j).get(2)));
+                            (Date) super.getData().get(j).get(2),
+                            PersonTypes.DIRECTOR));
                 }
                 directors.forEach(movie::addDirector);
 
@@ -63,7 +64,8 @@ public class MovieCache extends Cache {
                 for(int j = 0; j < super.getData().size(); j++) {
                     actors.add(new Person((int) super.getData().get(j).get(0),
                             (String) super.getData().get(j).get(1),
-                            (Date) super.getData().get(j).get(2)));
+                            (Date) super.getData().get(j).get(2),
+                            PersonTypes.ACTOR));
                 }
                 actors.forEach(movie::addActor);
                 movies.add(movie);

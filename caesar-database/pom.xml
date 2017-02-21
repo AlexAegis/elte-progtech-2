@@ -7,13 +7,13 @@
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <name>caesar-database</name>
+    <title>caesar-database</title>
     <url>https://github.com/AlexAegis</url>
 
     <repositories>
         <repository>
             <id>GitHub.AlexAegis</id>
-            <name>maven-repository</name>
+            <title>maven-repository</title>
             <url>https://raw.github.com/AlexAegis/maven-repository/mvn-repo/</url>
             <snapshots>
                 <enabled>true</enabled>

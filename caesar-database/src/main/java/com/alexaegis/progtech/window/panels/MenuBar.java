@@ -2,6 +2,7 @@ package com.alexaegis.progtech.window.panels;
 
 import com.alexaegis.progtech.Main;
 import com.alexaegis.progtech.window.ConnectionWindow;
+import com.alexaegis.progtech.window.NewMovieWindow;
 
 import javax.swing.*;
 
@@ -13,6 +14,9 @@ public class MenuBar extends JMenuBar {
         ImageIcon iconBoxDownload = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/boxdownload32.png"));
         ImageIcon iconStop = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/stop32.png"));
         ImageIcon iconSleep = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/sleep32.png"));
+        ImageIcon iconShop = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/shoppingcart32.png"));
+        ImageIcon iconRight = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/turnright32.png"));
+        ImageIcon iconLeft = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/turnright32.png")); //TODO new icon
 
         JMenu fileMenu = new JMenu("Database");
 
@@ -43,8 +47,14 @@ public class MenuBar extends JMenuBar {
         fileMenu.addSeparator();
         fileMenu.add(miExit);
 
+        JMenu movieMenu = new JMenu("Movies");
+        JMenuItem miAddMovie = new JMenuItem("Add Movie", iconShop);
+        JMenuItem miShowMovies = new JMenuItem("Show Movies", iconShop);
+        JMenuItem miShowLends = new JMenuItem("Show Lends", iconShop);
+        miAddMovie.addActionListener(e -> new NewMovieWindow());
+        movieMenu.add(miAddMovie);
         add(fileMenu);
-
+        add(movieMenu);
         revalidate();
         repaint();
     }

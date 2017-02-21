@@ -8,7 +8,7 @@ import java.util.Vector;
 public class Movie {
 
     private int id;
-    private String name;
+    private String title;
     private Date release;
     private List<Person> directors = new ArrayList<>();
     private List<Person> actors = new ArrayList<>();
@@ -16,9 +16,9 @@ public class Movie {
     private String owner;
     private boolean legal;
 
-    public Movie(int id, String name, Date release) {
+    public Movie(int id, String title, Date release) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.release = release;
     }
 
@@ -33,7 +33,7 @@ public class Movie {
     public Vector<Object> getData() {
         Vector<Object> data = new Vector<>();
         data.add(id);
-        data.add(name);
+        data.add(title);
         data.add(release);
         data.add(directors);
         data.add(actors);
@@ -44,12 +44,32 @@ public class Movie {
     public String toString() {
         return "Movie{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", release=" + release +
                 ", directors=" + directors +
                 ", actors=" + actors +
                 ", owner='" + owner + '\'' +
                 ", legal=" + legal +
                 '}';
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getRelease() {
+        return release;
+    }
+
+    public List<Person> getActors() {
+        return actors;
+    }
+
+    public List<Person> getDirectors() {
+        return directors;
     }
 }

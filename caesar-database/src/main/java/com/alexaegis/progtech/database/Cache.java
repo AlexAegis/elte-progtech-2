@@ -3,7 +3,9 @@ package com.alexaegis.progtech.database;
 import com.github.alexaegis.swing.Updatable;
 
 import java.sql.*;
+import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Cache implements Updatable {
@@ -27,6 +29,10 @@ public class Cache implements Updatable {
 
     public void setQuery(String query) {
         this.query = query;
+    }
+
+    public List<Object> getColumn(int i) {
+        return data.stream().map(objects -> objects.get(i)).collect(Collectors.toList());
     }
 
     @Override

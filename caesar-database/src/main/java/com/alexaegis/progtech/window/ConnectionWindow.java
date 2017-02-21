@@ -9,15 +9,14 @@ import static com.alexaegis.progtech.Main.connector;
 import static com.alexaegis.progtech.Main.dbProperties;
 import static com.alexaegis.progtech.Main.sshProperties;
 import static com.alexaegis.progtech.window.MainWindow.displayProperties;
-import static com.alexaegis.progtech.window.MainWindow.keyboardController;
 
 public class ConnectionWindow extends JFrame {
 
     private JPanel connectionPane;
-    private int width = Integer.parseInt(displayProperties.getProperty("prompt.width"));
-    private int height = Integer.parseInt(displayProperties.getProperty("prompt.height"));
+    private int width = Integer.parseInt(displayProperties.getProperty("connectprompt.width"));
+    private int height = Integer.parseInt(displayProperties.getProperty("connectprompt.height"));
 
-    private String title = displayProperties.getProperty("prompt.title");
+    private String title = displayProperties.getProperty("connectprompt.title");
     private boolean sshEnabled = false;
     private JFormattedTextField dbHostField;
     private JFormattedTextField dbPortField;
