@@ -68,21 +68,12 @@ public class MovieInserter {
         }
         for (Person person : movie.getActors()) {
             evaluateNewPerson(person, movieId);
-            try {
-                sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
         for (Person person : movie.getDirectors()) {
             evaluateNewPerson(person, movieId);
-            try {
-                sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
-        queries.add("INSERT INTO movies VALUES (" + movieId + ", \"" + movie.getTitle() + "\", " + movie.getRelease() + ")");
+        queries.add("INSERT INTO movies VALUES (" + movieId + ", \"" + movie.getTitle() + "\", \"" + movie.getRelease() + "\")");
+        queries.add("COMMIT");
         queries.forEach(System.out::println);
         queries.forEach(this::executeQuery);
     }
@@ -135,13 +126,16 @@ public class MovieInserter {
 
         if(!containsPerson) {
             addNewPerson(person, movieId);
+            //ids.add(personId);
+            //names.add(person.getName());
         } else {
             evaluateNewMoviePersonRelation(person, movieId);
         }
     }
 
     private void addNewPerson(Person person, int movieId) {
-        queries.add("INSERT INTO " + (person.getType().equals(PersonTypes.ACTOR) ? "actors" : "directors") + " VALUES (" + person.getId() + ", \"" + person.getName() + "\", " + person.getBirth() + ")");
+        queries.add("INSERT INTO " + (person.getType().equals(PersonTypes.ACTOR) ? "actors" : "directors") + " VALUES (" + person.getId() + ", \"" + person.getName() + "\", " + person.getBirth() + ");");
+        queries.add("COMMIT;");
         addNewMoviePersonRelation(person, movieId);
     }
 
@@ -162,16 +156,19 @@ public class MovieInserter {
                 present = true;
         if(!present) {
             addNewMoviePersonRelation(person, movieId);
+            movieIds.add(movieId);
+            personIds.add(person.getId());
         }
     }
 
     private void addNewMoviePersonRelation(Person person, int movieId) {
-        queries.add("INSERT INTO movies_" + (person.getType().equals(PersonTypes.ACTOR) ? "actors" : "directors") + " VALUES (" + movieId + ", " + person.getId() + ")");
+        queries.add("INSERT INTO movies_" + (person.getType().equals(PersonTypes.ACTOR) ? "actors" : "directors") + " VALUES (" + movieId + ", " + person.getId() + ");");
+        queries.add("COMMIT;");
     }
 
     public void executeQuery(String query) {
         try(Statement statement = connector.getConnection().createStatement()) {
-            statement.executeQuery(query);
+            statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
