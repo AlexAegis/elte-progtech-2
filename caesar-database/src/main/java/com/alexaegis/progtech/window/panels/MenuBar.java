@@ -18,7 +18,7 @@ public class MenuBar extends JMenuBar {
         ImageIcon iconRight = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/turnright32.png"));
         ImageIcon iconLeft = new ImageIcon(MenuBar.class.getClassLoader().getResource("icons/turnright32.png")); //TODO new icon
 
-        JMenu fileMenu = new JMenu("Database");
+        JMenu fileMenu = new JMenu("Connection");
 
         JMenuItem miConnect = new JMenuItem("Connect", iconBox);
         JMenuItem miDisconnect = new JMenuItem("Disconnect", iconStop);
