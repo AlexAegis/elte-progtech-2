@@ -4,7 +4,7 @@
 
 ##Movie Repository (4. feladat)
 
-###1. Bevezetés
+##1. Bevezetés
  - A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
  Könnyű keresést és rendezési lehetőségeket biztosít a felhasználó személyes  filmjeihez. 
  Emelett lehetséges vele számontartani filmjeink állapotát úgy mint annak eredetisége és, 
@@ -12,7 +12,7 @@
  kalózmásolat adatait gyorsan törölhetjük az adatbázisból. Új filmeket, és új kölcsönbeadási 
  eseményeket is felvehetünk melyeket a program az adatbázisban rögzít.
  
-###2. Feladatleírás
+##2. Feladatleírás
 
 Készítsünk programot, amellyel otthoni adathordozón lévő filmjeinket tudjuk nyilván tartani az
 alábbi funkciókkal:
@@ -45,7 +45,7 @@ kalózmásolat.
     - filmek (cím, rendező(k), főszereplő(k), megjelenés éve, eredetiség)
     - kölcsönzések (film, név, dátum)
 
-####3. Követelményelemzés
+##3. Követelményelemzés
 - A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
 dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
 Maven segítségével fogjuk buildelni.
@@ -56,20 +56,23 @@ Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezel
 SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
 -
 
-####4. Use Case
+##4. Use Case
 - Általános felhasználás
 
 ![use_case](./usecase.png)
 
-####5. User Stories
+##5. User Stories
 
-## Bejelentkezés
-
+#### Filmlistával kapcsolatos User Story-k
 
 <table>
   <tr>
-    <th>Actor</th>
-    <th>Vendég</th>
+    <th>1</th>
+    <th>Bejelentkezés, adatbáziskapcsolat létesítése</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Vendég</td>
   </tr>
   <tr>
     <td>Előfeltétel</td>
@@ -125,7 +128,107 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
   </tr>
 </table>
 
-##
+<table>
+  <tr>
+    <th>2</th>
+    <th>Filmlista frissítése/lekérése</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A felhasználó értesítést kap a sikertelen adatlekérésről</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>Megjelenik a filmlista annak 5 oszlopával az alábbi sorrendben 
+    alapértelmezetten a Cím szerint rendezve:
+    <ul>
+    <li>Cím</li>
+    <li>Rendezők listája</li>
+    <li>Főszereplők listája</li>
+    <li>Megjelenés dátuma</li>
+    <li>Eredetiség</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A vendég sikeresen csatlakozott az adatbázishoz, vagy a "Kapcsolat/Connection" menüben
+        a "Frissítés/Update" gombra kattintott</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó lekérést intéz az adatbázissal szemben</li>
+            <li>Az adatok megjelennek a képernyőn</li>  
+        </ol>
+  </tr>
+</table>
 
+
+<table>
+  <tr>
+    <th>3</th>
+    <th>Filmlista rendezése, keresés a listában</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Megjelenített filmlista</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>Nincs megjeleníthető információ a képernyőn</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A képernyőn a felhasználó szerinti sorrendben, az ő keresőszavaira reagálva jelennek meg</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A rendezés az oszlopok neveinek kattintásával érhető el, növekvő illetve második kattintásra csökkenő 
+    sorrendben. A keresés pedig a legalsó sorban lévő üres szövegmezőkkel érhetőek el melyek az inputra
+    reagálva folyamatosan frissítik a kijelzett filmlistát</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ul>
+            <li>    Rendezés
+                    <ol>
+                        <li>A felhasználó rákattint a egyik oszlop címére</li>
+                        <li>A filmlista a kiválasztott oszlop szerinti növekvő sorrendben rendezésre kerül</li>
+                        <li>A felhasználó rákattint az oszlop címére ismét</li>
+                        <li>A filmlista a kiválasztott oszlop szerinti csökkenő sorrendben rendezésre kerül</li>
+                    </ol>
+            </li>
+            <li>    Keresés
+                    <ol>
+                        <li>A felhasználó beírja a keresőszavát az adott oszlop legalsó keresőmezőjébe</li>
+                        <li>A filmlista minden egyes új begépelt karakterre frissül és a keresett oszlop szerint
+                        rendezésben jelenik meg a képernyőn</li>
+                        <li>A felhasználó üresre törli a mezőt a filmlista visszaáll keresés előtti állapotára</li>
+                    </ol>
+            </li>
+        </ul>
+  </tr>
+</table>
  
+ 
+#### Kölcsönzésekkel kapcsolatos User Story-k
+
+#### Biztonsági funkciókkal kapcsolatos User Story-k
+
+##6. Nem funkcionális követelmények
 
