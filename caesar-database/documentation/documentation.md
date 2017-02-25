@@ -57,6 +57,8 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
 -
 
 ####4. Use Case
+- Általános felhasználás
+
 ![use_case](./usecase.png)
 
 ####5. User Stories
