@@ -83,8 +83,8 @@ public final class Connector extends Thread implements Runnable {
         try {
             running = false;
             logger.info("Connection stopped");
-            session.disconnect();
-            connection.close();
+            if(session != null) session.disconnect();
+            if(connection != null) connection.close();
             connected = false;
         } catch (SQLException e) {
             e.printStackTrace();

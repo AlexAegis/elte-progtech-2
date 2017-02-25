@@ -13,7 +13,6 @@
     <repositories>
         <repository>
             <id>GitHub.AlexAegis</id>
-            <title>maven-repository</title>
             <url>https://raw.github.com/AlexAegis/maven-repository/mvn-repo/</url>
             <snapshots>
                 <enabled>true</enabled>
