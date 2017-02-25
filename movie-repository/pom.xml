@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.alexaegis.progtech</groupId>
-    <artifactId>caesar-database</artifactId>
+    <artifactId>movie-repository</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
-    <title>caesar-database</title>
+    <title>movie-repository</title>
     <url>https://github.com/AlexAegis</url>
 
     <repositories>
