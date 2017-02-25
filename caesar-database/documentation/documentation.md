@@ -65,40 +65,67 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
 
 ## Bejelentkezés
 
-| Actor               | Vendég                                                                             
-|:--------------------|:-----------------------------------------------------------------------------------
-| Előfeltétel         | Nincs adatbáziskapcsolat                                                           
-| Sikertelen Eredmény | A vendég újból megpróbálkozhat a bejelentkezéssel                                  
-| Sikeres Eredmény    | A vendég felhasználóvá lép elő, hozzáfér a megadott adatbázishoz                   
-| Kiváltja            | A vendég a "Csatlakozás/Connect" gombra kattintott a "Kapcsolat/Connection" menüben
-| Események           | 1. A felhasználó megváltoztatja az alapértelmezetten felajánlott adatokat          
-|                     |     a) adatbázis címe (alapértelmezett: mysql.caesar.elte.hu)                       
-|                     |     b) portja (alapértelmezett: 3306)                                               
-|                     |     c) felhasználóneve                                                              
-|                     |     d) jelszava                                                                     
-|                     | 2. Beállítja, hogy szeretne e SSH portforwardingot amennyiben távoli adatbázist kíván elérni
-|                     |     a) kapcsolat címe (alapértelmezetten caesar.elte.hu)                                     
-|                     |     b) portja (alapértelmezetten 22)                                                         
-|                     |     c) továbbítás célja (alapértelmezetten 127.0.0.1)                                        
-|                     |     d) portja (alapértelmezetten 22)                                                         
-|                     |     e) felhasználóneve                                                                       
-|                     |     f) jelszava                                                                              
-|                     | 3. A "Kapcsolódás/Connect" gomb megnyomása után a program megkísérel bejelentkezni a megadott adatokkal az adatbázisba, amennyiben sikerül a filmlista azonnal megjelenik a képernyőn és minden további funkció elérhetővé válik.
-|                     | 4. Sikertelen bejelentkezés esetén az okot egy előugró ablakban közöljük a felhasználóval majd lehetősége van újbóli kísérletre
-| Kiegészítés         |  A bejelentkezés követelményei:
-|                     |     - Nem helyi cím esetén internetkapcsolat
-|                     |     - A port mezők csak számokat tartalmazhatnak
+
+<table>
+  <tr>
+    <th>Actor</th>
+    <th>Vendég</th>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Nincs adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A vendég újból megpróbálkozhat a bejelentkezéssel</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A vendég felhasználóvá lép elő, hozzáfér a megadott adatbázishoz, a program további funkcióihoz</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A vendég a "Csatlakozás/Connect" gombra kattintott a "Kapcsolat/Connection" menüben</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó megváltoztatja az alapértelmezetten felajánlott adatokat</li>
+            <ul>
+                <li>adatbázis címe (alapértelmezett: mysql.caesar.elte.hu)</li>
+                <li>portja (alapértelmezett: 3306)   </li>
+                <li>felhasználóneve </li>
+                <li>jelszava</li>
+            </ul>
+            <li>Beállítja, hogy szeretne e SSH portforwardingot amennyiben távoli adatbázist kíván elérni</li>
+                        <ul>
+                            <li>kapcsolat címe (alapértelmezetten caesar.elte.hu)</li>
+                            <li>portja (alapértelmezetten 22)</li>
+                            <li>továbbítás célja (alapértelmezetten 127.0.0.1)</li>
+                            <li>portja (alapértelmezetten 22)</li>
+                            <li>felhasználóneve</li>
+                            <li>jelszava
+                        </ul>
+            <li>A "Kapcsolódás/Connect" gomb megnyomása után a program megkísérel bejelentkezni a megadott 
+            adatokkal az adatbázisba, amennyiben sikerül a filmlista azonnal megjelenik a képernyőn és minden 
+            további funkció elérhetővé válik.</li>
+            <li>Sikertelen bejelentkezés esetén az okot egy előugró ablakban közöljük a felhasználóval 
+            majd lehetősége van újbóli kísérletre</li>
+        </ol>
+  </tr>
+  <tr>
+    <td>Kiegészítés</td>
+    <td>A bejelentkezés követelményei:
+        <ul>
+            <li>Nem helyi cím esetén internetkapcsolat</li>
+            <li>A port mezők csak számokat tartalmazhatnak</li>
+        </ul>
+    </td>
+  </tr>
+</table>
 
 ##
-
-| Actor               | Felhasználó  |
-|:--------------------|:---------------|
-| Előfeltétel         | a  |
-| Sikertelen Eredmény |   |
-| Kiváltja            |   |
-| Események           |   |
-| Kiegészítés         |   |
-
 
  
 
