@@ -1,4 +1,4 @@
-#Documentation
+﻿#Documentation
 ###### Győri Sándor -  AQV5AK
 ###### alexaegis@gmail.com
 
@@ -65,7 +65,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 ### Use Case
  Általános felhasználás
 
-![use_case](./usecase.png)
+![use_case](./usecasediag.png)
 
  Felülettervezet 
 
