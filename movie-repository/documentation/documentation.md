@@ -63,6 +63,22 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
 
 ![use_case](./usecase.png)
 
+- Felülettervezet 
+
+    - Teljes ablak
+    
+    ![main_window_full](./mainwindowfull_prototype.png)
+    
+    - Connection menu
+    
+    ![main_window](./mainwindow_prototype.png)
+    
+    - Connect window
+    
+    ![connect_menu](./connectmenu_prototype.png)
+
+######***icons are placeholders***
+
 ##5. User Stories
 
 #### Filmlistával kapcsolatos User Story-k
@@ -276,6 +292,42 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
     </td>
   </tr>
 </table>
+
+<table>
+  <tr>
+    <th>5</th>
+    <th>Kilépés</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Vendég / Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Megnyitott program</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A program nem kerül bezárásra, az okáról előugró ablak figyelmeztet</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A program lezárja az adatbáziskapcsolatokat és leáll</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó a "Kapcsolat/Connection" menüben a "Leállítás/Exit Application" gombra kattint</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó a "Kapcsolat/Connection" menüben a "Leállítás/Exit Application" gombra kattint</li>
+            <li>A program leelenőrzi, hogy van e adatbáziskapcsolat, ha van bezárja azt</li>
+            <li>A program bezárul</li>
+        </ol>
+  </tr>
+</table>
  
 #### Kölcsönzésekkel kapcsolatos User Story-k
 
@@ -321,7 +373,6 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
         </ol>
   </tr>
 </table>
-
 
 <table>
   <tr>

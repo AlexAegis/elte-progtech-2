@@ -23,7 +23,6 @@ public class MenuBar extends JMenuBar {
         JMenuItem miConnect = new JMenuItem("Connect", iconBox);
         JMenuItem miDisconnect = new JMenuItem("Disconnect", iconStop);
         JMenuItem miUpdate = new JMenuItem("Update", iconBoxDownload);
-        JMenuItem miOptions = new JMenuItem("Options", iconWrench);
 
         JMenuItem miExit = new JMenuItem("Exit", iconSleep);
 
@@ -43,9 +42,17 @@ public class MenuBar extends JMenuBar {
         fileMenu.add(miDisconnect);
         fileMenu.add(miUpdate);
         fileMenu.addSeparator();
-        fileMenu.add(miOptions);
-        fileMenu.addSeparator();
         fileMenu.add(miExit);
+
+        JMenu databaseMenu = new JMenu("Database");
+
+        JMenuItem miInitDB = new JMenuItem("Initialize Database", iconShop);
+        JMenuItem miRestoreDB = new JMenuItem("Restore Database", iconShop);
+        JMenuItem miBackupDB = new JMenuItem("Backup Database", iconShop);
+
+        databaseMenu.add(miInitDB);
+        databaseMenu.add(miRestoreDB);
+        databaseMenu.add(miBackupDB);
 
         JMenu movieMenu = new JMenu("Movies");
         JMenuItem miAddMovie = new JMenuItem("Add Movie", iconShop);
@@ -53,8 +60,24 @@ public class MenuBar extends JMenuBar {
         JMenuItem miShowLends = new JMenuItem("Show Lends", iconShop);
         miAddMovie.addActionListener(e -> new NewMovieWindow());
         movieMenu.add(miAddMovie);
+        movieMenu.addSeparator();
+        movieMenu.add(miShowMovies);
+        movieMenu.add(miShowLends);
+
+        JMenu leasesMenu = new JMenu("Leases");
+        JMenuItem miListLeases = new JMenuItem("List Leases", iconShop);
+        JMenuItem miNewLease = new JMenuItem("New Lease", iconShop);
+        leasesMenu.add(miListLeases);
+        leasesMenu.add(miNewLease);
+
+        JMenu panicMenu = new JMenu("Panic");
+
         add(fileMenu);
+        add(databaseMenu);
         add(movieMenu);
+        add(leasesMenu);
+        add(panicMenu);
+
         revalidate();
         repaint();
     }
