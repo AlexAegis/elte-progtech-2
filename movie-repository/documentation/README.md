@@ -5,7 +5,7 @@
 ##Movie Repository (4. feladat)
 
 ##1. Bevezetés
- - A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
+ A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
  Könnyű keresést és rendezési lehetőségeket biztosít a felhasználó személyes  filmjeihez. 
  Emelett lehetséges vele számontartani filmjeink állapotát úgy mint annak eredetisége és, 
  hogy kinek a birtokában van éppen.  Valamint egy biztonsági funkció segítségével az összes 
