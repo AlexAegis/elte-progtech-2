@@ -60,28 +60,30 @@ Lehetőséget adunk a felhasználónak, hogy távoli adatbázist is tudjon bizto
 növelve a program hordozhatóságát. Mivel a programot előre láthatóan használi fogók jelentős része rendelkezik
 ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könnyedén felhasználhatják a programmal.
 
-##4. Use Case
-- Általános felhasználás
+
+##4. Funkcionális követelmények
+### Use Case
+ Általános felhasználás
 
 ![use_case](./usecase.png)
 
-- Felülettervezet 
+ Felülettervezet 
 
-    - Teljes ablak
-    
-    ![main_window_full](./mainwindowfull_prototype.png)
-    
-    - Connection menu
-    
-    ![main_window](./mainwindow_prototype.png)
-    
-    - Connect window
-    
-    ![connect_menu](./connectmenu_prototype.png)
+- Teljes ablak
+
+![main_window_full](./mainwindowfull_prototype.png)
+
+- Connection menu
+
+![main_window](./mainwindow_prototype.png)
+
+- Connect window
+
+![connect_menu](./connectmenu_prototype.png)
 
 ######***A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.***
 
-##5. User Stories
+### User Stories
 
 #### Filmlistával kapcsolatos User Story-k
 
@@ -693,7 +695,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
     </tr>
 </table>
 
-##6. Nem funkcionális követelmények
+##5. Nem funkcionális követelmények
 
 1. Termék követelmények
 
@@ -763,6 +765,3 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 | title       | name      | name    | director_id      | actor_id      | leaser_name  |
 | release     |           |         |                  |               | lease_date   |
 | originality |           |         |                  |               |              |       
-
-
-
