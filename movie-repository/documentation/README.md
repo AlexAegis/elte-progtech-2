@@ -48,15 +48,17 @@ kalózmásolat.
     - kölcsönzések (film, név, dátum)
 
 ##3. Követelményelemzés
-- A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
-dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
-Maven segítségével fogjuk buildelni.
-- A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
-Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
-dependecia fog szolgáltatni.
-Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
-SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
--
+
+Egy átlátható és könnyen kezelhető programot fogunk megvalósítani, mely egy futattható állományban
+fogja tudni ellátni a feladatait egy adatbázis segítségével. Képes lesz ezt az adatbázist magának megformázni
+a felhasználó magának adatokkal feltölteni, akár file-ból is, és az adatbázisban lévő adatokat
+biztonsági mentésként ki is mentheti magának. Az adatbázis adatai táblázatos formában fognak megjelenni,
+a több adatot tartalmazó elemek (mint a színészek, rendezők) pedig a mezőben egy legördülő menüként jelnnek majd meg
+ahol alapértelmezetten az első elem fog látszani. Ha csak egy ilyen mező van akkor egyszerű elemként jelenik meg
+A keresés a táblákban valós időben fog zajlani, minden frissült inputra változni fog a lista a keresésnek megfelelően.
+Lehetőséget adunk a felhasználónak, hogy távoli adatbázist is tudjon biztonságosan kezel SSH segítségével, így
+növelve a program hordozhatóságát. Mivel a programot előre láthatóan használi fogók jelentős része rendelkezik
+ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könnyedén felhasználhatják a programmal.
 
 ##4. Use Case
 - Általános felhasználás
@@ -739,8 +741,17 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
     Ennek kezeléséről, és a GitHub integrációjárol itt lehet többet megtudni:
     https://github.com/AlexAegis/maven-repository
     
+    - A program fejlesztése során a Caesar rendszer által szolgáltatott mySQL adatbázis-t fogjuk használni
+    
 3. Külső követelmények
-
+    - A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
+      dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
+      Maven segítségével fogjuk buildelni.
+    - A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
+      Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
+      dependecia fog szolgáltatni.
+      Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
+      SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
     - A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
       keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
       
