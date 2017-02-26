@@ -432,54 +432,6 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 <table>
   <tr>
     <th>3</th>
-    <th>Pánik</th>
-  </tr>
-    <tr>
-    <td>Actor</td>
-    <td>Felhasználó</td>
-  </tr>
-  <tr>
-    <td>Előfeltétel</td>
-    <td>Adatbáziskapcsolat</td>
-  </tr>
-  <tr>
-    <td>Sikertelen Eredmény</td>
-    <td>385. § (1) Aki másnak vagy másoknak a szerzői jogról szóló törvény alapján fennálló szerzői vagy 
-    ahhoz kapcsolódó jogát vagy jogait vagyoni hátrányt okozva megsérti, vétség miatt két évig terjedő 
-    szabadságvesztéssel büntetendő</td>
-  </tr>
-  <tr>
-    <td>Sikeres Edemény</td>
-    <td>Az adatbázisból törlődik minden kalózmásolatként megjelölt filmel kapcsolatos adat</td>
-  </tr>
-  <tr>
-    <td>Kiváltja</td>
-    <td>A felhasználó a "Pánik/Panic" gombra kattintott a menüben</td>
-  </tr>
-  <tr>
-    <td>Események</td>
-    <td>
-        <ol>
-            <li>A felhasználó  a "Pánik/Panic" gombra kattintott a menüben</li>
-            <li>Az adatbázis töröl minden kalózmásolattal kapcsolatos adatot, táblák közötti relációt</li>
-            <li>A filmlista frissül</li>
-        </ol>
-  </tr>
-  <tr>
-    <td>Kiegészítés</td>    
-    <td>
-        Ha a szerzői vagy szerzői joghoz kapcsolódó jogok megsértését
-        jelentős vagyoni hátrányt okozva követik el, a büntetés bűntett miatt egy évtől öt évig,
-        különösen nagy vagyoni hátrányt okozva követik el, a büntetés két évtől nyolc évig,
-        különösen jelentős vagyoni hátrányt okozva követik el, a büntetés öt évtől tíz évig
-        terjedő szabadságvesztés.
-    </td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>4</th>
     <th>Filmet kölcsönad</th>
   </tr>
     <tr>
@@ -527,7 +479,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 <table>
   <tr>
-    <th>5</th>
+    <th>4</th>
     <th>Kölcsönbeadott film visszakérése</th>
   </tr>
     <tr>
@@ -693,6 +645,54 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
       <td>
          A program tartalmaz egy "initschemas.sql" filet, így ezt nem dumpoljuk
     </tr>
+</table>
+
+<table>
+  <tr>
+    <th>4</th>
+    <th>Pánik</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>385. § (1) Aki másnak vagy másoknak a szerzői jogról szóló törvény alapján fennálló szerzői vagy 
+    ahhoz kapcsolódó jogát vagy jogait vagyoni hátrányt okozva megsérti, vétség miatt két évig terjedő 
+    szabadságvesztéssel büntetendő</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>Az adatbázisból törlődik minden kalózmásolatként megjelölt filmel kapcsolatos adat</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó a "Pánik/Panic" gombra kattintott a menüben</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó  a "Pánik/Panic" gombra kattintott a menüben</li>
+            <li>Az adatbázis töröl minden kalózmásolattal kapcsolatos adatot, táblák közötti relációt</li>
+            <li>A filmlista frissül</li>
+        </ol>
+  </tr>
+  <tr>
+    <td>Kiegészítés</td>    
+    <td>
+        Ha a szerzői vagy szerzői joghoz kapcsolódó jogok megsértését
+        jelentős vagyoni hátrányt okozva követik el, a büntetés bűntett miatt egy évtől öt évig,
+        különösen nagy vagyoni hátrányt okozva követik el, a büntetés két évtől nyolc évig,
+        különösen jelentős vagyoni hátrányt okozva követik el, a büntetés öt évtől tíz évig
+        terjedő szabadságvesztés.
+    </td>
+  </tr>
 </table>
 
 ##5. Nem funkcionális követelmények
