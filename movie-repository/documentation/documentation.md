@@ -10,7 +10,9 @@
  Emelett lehetséges vele számontartani filmjeink állapotát úgy mint annak eredetisége és, 
  hogy kinek a birtokában van éppen.  Valamint egy biztonsági funkció segítségével az összes 
  kalózmásolat adatait gyorsan törölhetjük az adatbázisból. Új filmeket, és új kölcsönbeadási 
- eseményeket is felvehetünk melyeket a program az adatbázisban rögzít.
+ eseményeket is felvehetünk melyeket a program az adatbázisban rögzít. Az adatbázis tartalmáról
+ pedig a program képes biztonsági másolatot készíteni, esetleg egy üres adatbázis esetén a
+ megfelelő sémákkal inicializálni azt, biztonsági mentést fájlból betölteni.
  
 ##2. Feladatleírás
 
@@ -173,7 +175,6 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
   </tr>
 </table>
 
-
 <table>
   <tr>
     <th>3</th>
@@ -224,7 +225,6 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
         </ul>
   </tr>
 </table>
-
 
 <table>
   <tr>
@@ -278,7 +278,200 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
 </table>
  
  
+ 
 #### Kölcsönzésekkel kapcsolatos User Story-k
+
+
+<table>
+  <tr>
+    <th>1</th>
+    <th>Kölcsönzések listájának lekérése/frissítése</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A felhasználó értesítést kap a sikertelen adatlekérésről</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>Megjelenik a kölcsönzések listája annak X oszlopával az alábbi sorrendben 
+    alapértelmezetten a film címe szerint rendezve:
+    <ul>
+    <li>Cím</li>
+    <li>Kölcsönbeadás dátuma</li>
+    <li>Kölcsönző neve</li>
+    <li>Eredetiség</li>
+    </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhaszáló a "Kölcsönzések" gombra kattintott a menüben</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhaszáló a "Kölcsönzések" gombra kattint</li>
+            <li>Az adatok megjelennek a képernyőn</li>
+        </ol>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <th>2</th>
+    <th>Kölcsönzési lista rendezése, keresés a listában</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Megjelenített kölcsönzési lista</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>Nincs megjeleníthető információ a képernyőn</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A képernyőn a felhasználó szerinti sorrendben, az ő keresőszavaira reagálva jelennek meg az adatok</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A rendezés az oszlopok neveinek kattintásával érhető el, növekvő illetve második kattintásra csökkenő 
+    sorrendben. A keresés pedig a legalsó sorban lévő üres szövegmezőkkel érhetőek el melyek az inputra
+    reagálva folyamatosan frissítik a kijelzett kölcsönzési listát</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ul>
+            <li>    Rendezés
+                    <ol>
+                        <li>A felhasználó rákattint a egyik oszlop címére</li>
+                        <li>A kölcsönzési lista a kiválasztott oszlop szerinti növekvő sorrendben rendezésre kerül</li>
+                        <li>A felhasználó rákattint az oszlop címére ismét</li>
+                        <li>A kölcsönzési lista a kiválasztott oszlop szerinti csökkenő sorrendben rendezésre kerül</li>
+                    </ol>
+            </li>
+            <li>    Keresés
+                    <ol>
+                        <li>A felhasználó beírja a keresőszavát az adott oszlop legalsó keresőmezőjébe</li>
+                        <li>A kölcsönzési lista minden egyes új begépelt karakterre frissül és a keresett oszlop 
+                        szerinti rendezésben jelenik meg a képernyőn</li>
+                        <li>A felhasználó üresre törli a mezőt a filmlista visszaáll keresés előtti állapotára</li>
+                    </ol>
+            </li>
+        </ul>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>3</th>
+    <th>Pánik</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>385. § (1) Aki másnak vagy másoknak a szerzői jogról szóló törvény alapján fennálló szerzői vagy 
+    ahhoz kapcsolódó jogát vagy jogait vagyoni hátrányt okozva megsérti, vétség miatt két évig terjedő 
+    szabadságvesztéssel büntetendő</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>Az adatbázisból törlődik minden kalózmásolatként megjelölt filmel kapcsolatos adat</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó a "Pánik/Panic" gombra kattintott a menüben</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó  a "Pánik/Panic" gombra kattintott a menüben</li>
+            <li>Az adatbázis töröl minden kalózmásolattal kapcsolatos adatot, táblák közötti relációt</li>
+            <li>A filmlista frissül</li>
+        </ol>
+  </tr>
+  <tr>
+    <td>Kiegészítés</td>    
+    <td>
+        Ha a szerzői vagy szerzői joghoz kapcsolódó jogok megsértését
+        jelentős vagyoni hátrányt okozva követik el, a büntetés bűntett miatt egy évtől öt évig,
+        különösen nagy vagyoni hátrányt okozva követik el, a büntetés két évtől nyolc évig,
+        különösen jelentős vagyoni hátrányt okozva követik el, a büntetés öt évtől tíz évig
+        terjedő szabadságvesztés.
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>4</th>
+    <th>Filmet kölcsönad</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Megjelenített filmlista</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A felhasználó értesítést kap a kölcsönbeadás sikertelenségéről és okáról, az adatbázisban 
+    változás nem történik</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A filmlistából kikerül a film, a kölcsönzések listájában pedig megjelenik. A változatások adatbázis
+    szinten történnek</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó a "Külcsönbead" gombra kattintott a "Kölcsönzések" menüben</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó a "Külcsönbead" gombra kattintott a "Kölcsönzések" menüben</li>
+            <li>A felugró ablakban megadja a megfelelő adatokat</li>
+            <ul>
+                <li>Film (legördülő menüben jelennek meg a filmlistában szereplő filmek, a mezőben keresni is lehet)</li>
+                <li>Kölcsönző neve</li>
+                <li>Dátum (alapértelmezetten az aktuális, de lehetőség van korábbi kölcsönzéseket is felvenni)</li>
+            </ul>
+            <li>A felhasználó a kölcsönbeadás gombra kattint</li>
+            <li>A program figyelmeztet ha a film kalózmásolat, további megerősítésre vár</li>
+        </ol>
+  </tr>
+  <tr>
+    <td>Kiegészítés</td>
+    <td> Ha kalózmásolat kerül kiválasztásra a listából egy figyelmeztető ikon azonnal megjelenik</td>
+  </tr>
+</table>
 
 #### Biztonsági funkciókkal kapcsolatos User Story-k
 
