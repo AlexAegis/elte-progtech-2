@@ -224,6 +224,58 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
         </ul>
   </tr>
 </table>
+
+
+<table>
+  <tr>
+    <th>4</th>
+    <th>Új film hozzáadása</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>Az adatbázisban nem történik változtatás, a felhasználó felugró ablakban értesítést kap a
+    művelet sikertelenségéről</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A film adatai bekerülnek az adatbázisba, a filmlista frissül az új adatokkal</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó a "Film hozzáadása/Add movie" gombra kattintott a "Filmek/Movies" menüben majd
+    helyes adatokkal a film hozzáadási ablakban a "Hozzáad/Add" gombra kattint</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó a "Filmek/Movies" gombra kattint, majd a "Film hozzáadása/Add movie" gombra</li>
+            <li>A megjelent ablakban felveszi a megfelelő mezőkbe a film adatait:</li>
+            <ul>
+                <li>Film címe</li>
+                <li>Megjelenésének dátuma (YYYY-MM-DD formátumban)</li>
+                <li>A film rendezői (ha több van ';'-vel elválasztva)</li>
+                <li>A film főszereplői (ha több van ';'-vel elválasztva)</li>
+            </ul>
+            <li>Majd "Hozzáad/Add" gombra kattint</li>
+        </ol>
+  </tr>
+  <tr>
+    <td>Kiegészítés</td>
+    <td>
+            A film dátumának megadásának lehetőségét később kibővíthetjük, hogy több formátumban, esetleg 
+            hónap, nap nélkül is rögzíteni tudjuk</li>
+    </td>
+  </tr>
+</table>
  
  
 #### Kölcsönzésekkel kapcsolatos User Story-k
