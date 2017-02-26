@@ -450,13 +450,13 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
   </tr>
   <tr>
     <td>Kiváltja</td>
-    <td>A felhasználó a "Külcsönbead" gombra kattintott a "Kölcsönzések" menüben</td>
+    <td>A felhasználó a "Kölcsönbead" gombra kattintott a "Kölcsönzések" menüben</td>
   </tr>
   <tr>
     <td>Események</td>
     <td>
         <ol>
-            <li>A felhasználó a "Külcsönbead" gombra kattintott a "Kölcsönzések" menüben</li>
+            <li>A felhasználó a "Kölcsönbead" gombra kattintott a "Kölcsönzések" menüben</li>
             <li>A felugró ablakban megadja a megfelelő adatokat</li>
             <ul>
                 <li>Film (legördülő menüben jelennek meg a filmlistában szereplő filmek, a mezőben keresni is lehet)</li>
@@ -473,7 +473,186 @@ SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
   </tr>
 </table>
 
+<table>
+  <tr>
+    <th>5</th>
+    <th>Kölcsönbeadott film visszakérése</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Megjelenített kölcsönzési lista</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A felhasználó értesítést kap a kérés sikertelenségéről és okáról, az adatbázisban 
+    változás nem történik</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A kölcsönzési listából kikerül a film, a filmek listájában pedig megjelenik. A változatások adatbázis
+    szinten történnek</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó a "Visszaigényel" gombra kattintott a Kölcsönzési lista egy adott filmje mellett</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó a "Visszaigényel" gombra kattintott egy film mellett a Kölcsönzési listában</li>
+            <li>Ha hiba történik a program értesítést küld</li>
+            <li>A kölcsönzési lista frissül</li>
+        </ol>
+  </tr>
+</table>
+
 #### Biztonsági funkciókkal kapcsolatos User Story-k
 
+<table>
+  <tr>
+    <th>1</th>
+    <th>Üres adatbázist inicializál</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A felhasználó értesítést kap a kérés sikertelenségéről és okáról, az adatbázisban 
+    változás nem történik</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>Az adatbázis a megfelelő sémák szerint inicializálódik</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó az "Adatbázis/Database" menüben a "Inicializál/Initialize" gombra kattint</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó az "Adatbázis/Database" menüben a "Inicializál/Initialize" gombra kattint</li>
+            <li>A program leelenőrzi, hogy minden tábla létrehozható e, ha nem akkor megkérdezi a felhasználót, hogy:</li>
+                    <ol>
+                        <li>Törölje ki a már meglévő táblákat</li>
+                        <li>Készítsen biztonsági másolatot a jelenlegi táblákról</li>
+                        <li>Visszavonhatja</li>
+                    </ol>
+            <li>A táblák létrejönnek, az üres filmlista megjelenik a képernyőn</li>
+        </ol>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>2</th>
+    <th>Adatbázisinicializálás biztonsági mentésből</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A felhasználó értesítést kap a kérés sikertelenségéről és okáról, az adatbázisban 
+    változás nem történik</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>Az adatbázis a megfelelő sémák szerint inicializálódik, a biztonsági mentés adatai szeirnt 
+    pedig feltöltődik a bejegyzésekkel</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó az "Adatbázis/Database" menüben a "Visszaállít/Restore" gombra kattint</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó az "Adatbázis/Database" menüben a "Visszaállít/Restore" gombra kattint</li>
+            <li>A program leelenőrzi, hogy minden tábla megvan e, ha nem akkor megkérdezi a felhasználót, hogy:</li>
+                    <ol>
+                        <li>Törölje ki a jelenlegiket és inicializáljon e új táblákat a visszaállításhoz</li>
+                        <li>Készítsen biztonsági másolatot a jelenlegi táblákról és utána készítsen újakat</li>
+                        <li>Visszavonhatja</li>
+                    </ol>
+            <li>A táblák létrejönnek, az biztonsági mentés szerinti filmlista megjelenik a képernyőn</li>
+        </ol>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <th>3</th>
+    <th>Adatbázi biztonsági mentése</th>
+  </tr>
+    <tr>
+    <td>Actor</td>
+    <td>Felhasználó</td>
+  </tr>
+  <tr>
+    <td>Előfeltétel</td>
+    <td>Adatbáziskapcsolat</td>
+  </tr>
+  <tr>
+    <td>Sikertelen Eredmény</td>
+    <td>A felhasználó értesítést kap a kérés sikertelenségéről és okáról, az adatbázisban 
+    változás nem történik</td>
+  </tr>
+  <tr>
+    <td>Sikeres Edemény</td>
+    <td>A program indítási pontjában létrejön egy "moviedbdump" mappa benne a jelenleg csatlakozott adatbázis
+    filmekkel és kölcsönzésekkel kapcsolatos tábláinak sql file-jai</td>
+  </tr>
+  <tr>
+    <td>Kiváltja</td>
+    <td>A felhasználó az "Adatbázis/Database" menüben a "Elment/Backup" gombra kattint</td>
+  </tr>
+  <tr>
+    <td>Események</td>
+    <td>
+        <ol>
+            <li>A felhasználó az "Adatbázis/Database" menüben a  "Elment/Backup" gombra kattint</li>
+            <li>A program leelenőrzi megkeres minden filmekkel kapcsolatos táblát</li>
+            <li>Elkészíti a "moviedbdump" mappát</li>
+            <li>Elkészíti és feltölti az összes szükséges "*táblanév*.sql" filet, mely tartalmazza az 
+            összes INSERT utasítást ami az adott tábla replikálásához kell</li>
+        </ol>
+  </tr>
+    <tr>
+      <td>Kiegészítések</td>
+      <td>
+         A program tartalmaz egy "initschemas.sql" filet, így ezt nem dumpoljuk
+    </tr>
+</table>
+
 ##6. Nem funkcionális követelmények
+
+
+### Tervezett adatbázissémák
+
+| movies      | directors | actors  | movies_directors | movies_actors | leases       |
+|-------------|-----------|---------|------------------|---------------|--------------|
+| id          | id        | id      | movie_id         | movie_id      | movie_id     |
+| title       | name      | name    | director_id      | actor_id      | leaser_name  |
+| release     |           |         |                  |               | lease_date   |
+| originality |           |         |                  |               |              |       
 
