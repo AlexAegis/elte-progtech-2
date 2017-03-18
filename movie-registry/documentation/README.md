@@ -720,84 +720,84 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
     - A program összes funkcionalitása elérhető a saját .jar csomagjából. Bármilyen más fájlt akar még 
     kezelni, azt létre is kell tudni hoznia
     - A program az futtató környezet alapértelmezett Java Look & Feel-je szerint fog megjelenni
-   
-  2. Szervezeti követelmények
+ 
+2. Szervezeti követelmények
 
-      - A program fejlesztése a JetBrains IntelliJ IDEA fejlesztői környezetben fog zajlani, az adatbázis
-      kezeléséhez pedig a JetBrains DataGrip nevű szoftverét használjuk, hogy a program funkciót
-      megfelelően monitorozni tudjuk.
-      
-      - A fejlesztés a Clean Code alapelveinek megfelelően és TDD szerint fog zajlani.
-      
-      - A fejlesztés az alábbi határidők mentén fog haladni:
-          1. beadandó: Dokumentáció - 2017.02.27
-          2. beadandó: Statikus terv - 2017.03.20.
-          3. beadandó: Részleges prototípus tesztelés - 2017.04.17.
-          4. beadandó: Teljes megvalósítás, teszteléssel - 2017.05.08.
-          
-      - A fejlesztés folyamata Git segítségével lesz vezetve, online folyamatosan megtekinthető 
-      az következő helyen:
-      https://github.com/AlexAegis/elte-progtech-2/blob/master/movie-repository/
-      
-      - A program buildeléséhez, dependenciáinak kezeléséhez Maven-t fogunk használni.
-      Ennek kezeléséről, és a GitHub integrációjárol itt lehet többet megtudni:
-      https://github.com/AlexAegis/maven-repository
-      
-      - A program fejlesztése során a Caesar rendszer által szolgáltatott mySQL adatbázis-t fogjuk használni
-      
-  3. Külső követelmények
-      - A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
-        dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
-        Maven segítségével fogjuk buildelni.
-      - A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
-        Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
-        dependecia fog szolgáltatni.
-        Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
-        SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
-      - A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
-        keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
+    - A program fejlesztése a JetBrains IntelliJ IDEA fejlesztői környezetben fog zajlani, az adatbázis
+    kezeléséhez pedig a JetBrains DataGrip nevű szoftverét használjuk, hogy a program funkciót
+    megfelelően monitorozni tudjuk.
+    
+    - A fejlesztés a Clean Code alapelveinek megfelelően és TDD szerint fog zajlani.
+    
+    - A fejlesztés az alábbi határidők mentén fog haladni:
+        1. beadandó: Dokumentáció - 2017.02.27
+        2. beadandó: Statikus terv - 2017.03.20.
+        3. beadandó: Részleges prototípus tesztelés - 2017.04.17.
+        4. beadandó: Teljes megvalósítás, teszteléssel - 2017.05.08.
+        
+    - A fejlesztés folyamata Git segítségével lesz vezetve, online folyamatosan megtekinthető 
+    az következő helyen:
+    https://github.com/AlexAegis/elte-progtech-2/blob/master/movie-repository/
+    
+    - A program buildeléséhez, dependenciáinak kezeléséhez Maven-t fogunk használni.
+    Ennek kezeléséről, és a GitHub integrációjárol itt lehet többet megtudni:
+    https://github.com/AlexAegis/maven-repository
+    
+    - A program fejlesztése során a Caesar rendszer által szolgáltatott mySQL adatbázis-t fogjuk használni
+    
+3. Külső követelmények
+    - A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
+      dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
+      Maven segítségével fogjuk buildelni.
+    - A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
+      Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
+      dependecia fog szolgáltatni.
+      Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
+      SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
+    - A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
+      keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
 
-  ##6. Tervezés
+##6. Tervezés
 
-    1. A rendszer architectúrája
+1. A rendszer architectúrája
 
-    2. Adatbázis terv
+2. Adatbázis terv
 
-      - Adatbázis sémák
+  - Adatbázis sémák
 
-    | movies                                          |
-    |-------------|-------------|---------------------|
-    | id          | number(10)  | egyedi azonosító    |
-    | title       | varchar(42) | cím                 |
-    | release     | date        | megjelenés dátuma   |
-    | originality | boolean     | eredetiség státusza |
+| movies                                          |
+|-------------|-------------|---------------------|
+| id          | number(10)  | egyedi azonosító    |
+| title       | varchar(42) | cím                 |
+| release     | date        | megjelenés dátuma   |
+| originality | boolean     | eredetiség státusza |
 
-    | directors                                       |
-    |-------------|-------------|---------------------|
-    | id          | number(10)  | egyedi azonosító    |
-    | name        | varchar(42) | név                 |
+| directors                                       |
+|-------------|-------------|---------------------|
+| id          | number(10)  | egyedi azonosító    |
+| name        | varchar(42) | név                 |
 
-    | actors                                          |
-    |-------------|-------------|---------------------|
-    | id          | number(10)  | egyedi azonosító    |
-    | name        | varchar(42) | név                 |
+| actors                                          |
+|-------------|-------------|---------------------|
+| id          | number(10)  | egyedi azonosító    |
+| name        | varchar(42) | név                 |
 
-    | movies_directors                                      |
-    |-------------|------------|----------------------------|
-    | movie_id    | number(10) | film egyedi azonosítója    |
-    | director_id | number(10) | rendező egyedi azonosítója |
+| movies_directors                                      |
+|-------------|------------|----------------------------|
+| movie_id    | number(10) | film egyedi azonosítója    |
+| director_id | number(10) | rendező egyedi azonosítója |
 
-    | movies_actors                                         |
-    |-------------|------------|----------------------------|
-    | movie_id    | number(10) | film egyedi azonosítója    |
-    | actor_id    | number(10) | színész egyedi azonosítója |
+| movies_actors                                         |
+|-------------|------------|----------------------------|
+| movie_id    | number(10) | film egyedi azonosítója    |
+| actor_id    | number(10) | színész egyedi azonosítója |
 
-    | leases                                              |
-    |-------------|----------.--|-------------------------|
-    | movie_id    | number(10)  | film egyedi azonosítója |
-    | leaser_name | varchar(42) | kölcsönző neve          |
-    | lease_date  | date        | kölcsönzés időpontja    |
+| leases                                              |
+|-------------|----------.--|-------------------------|
+| movie_id    | number(10)  | film egyedi azonosítója |
+| leaser_name | varchar(42) | kölcsönző neve          |
+| lease_date  | date        | kölcsönzés időpontja    |
 
-      - Egyed-kapcsolat diagram
+  - Egyed-kapcsolat diagram
 
-    ![Entity Relationship](./database-entity-relationship.png)
+![Entity Relationship](./database-entity-relationship.png)
