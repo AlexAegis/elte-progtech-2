@@ -17,22 +17,22 @@ import static com.github.alexaegis.swing.ComponentTools.findComponents;
 
 public final class Connector extends Thread implements Runnable {
 
-    private final String dbDriver = dbProperties.getProperty("driver");
-    private final String jdbcDriver = dbProperties.getProperty("jdbcdriver");
-    private final String dbProtocol = dbProperties.getProperty("protocol");
-    private final String dbRemoteHost = dbProperties.getProperty("rhost");
-    private final int dbRemotePort = Integer.parseInt(dbProperties.getProperty("rport"));
-    private final String dbLocalHost = dbProperties.getProperty("lhost");
-    private final int dbLocalPort = Integer.parseInt(dbProperties.getProperty("lport"));
-    private final String dbSchema = dbProperties.getProperty("schema");
-    private final String dbUsername = dbProperties.getProperty("username");
-    private final int dbRefreshInterval = Integer.parseInt(dbProperties.getProperty("refreshinterval"));
-    private final String sshHost = sshProperties.getProperty("host");
-    private final int sshPort = Integer.parseInt(sshProperties.getProperty("port"));
-    private final String sshUsername = sshProperties.getProperty("username");
+    private String dbDriver = dbProperties.getProperty("driver");
+    private String jdbcDriver = dbProperties.getProperty("jdbcdriver");
+    private String dbProtocol = dbProperties.getProperty("protocol");
+    private String dbRemoteHost = dbProperties.getProperty("rhost");
+    private int dbRemotePort = Integer.parseInt(dbProperties.getProperty("rport"));
+    private String dbLocalHost = dbProperties.getProperty("lhost");
+    private int dbLocalPort = Integer.parseInt(dbProperties.getProperty("lport"));
+    private String dbSchema = dbProperties.getProperty("schema");
+    private String dbUsername = dbProperties.getProperty("username");
+    private int dbRefreshInterval = Integer.parseInt(dbProperties.getProperty("refreshinterval"));
+    private String sshHost = sshProperties.getProperty("host");
+    private int sshPort = Integer.parseInt(sshProperties.getProperty("port"));
+    private String sshUsername = sshProperties.getProperty("username");
 
-    private final String dbRemoteUrl = dbProtocol + ":" + dbDriver + "://" + dbRemoteHost + ":" + dbRemotePort + "/" + dbSchema;
-    private final String dbLocalUrl = dbProtocol + ":" + dbDriver + "://" + dbLocalHost + ":" + dbLocalPort + "/" + dbSchema;
+    private String dbRemoteUrl = dbProtocol + ":" + dbDriver + "://" + dbRemoteHost + ":" + dbRemotePort + "/" + dbSchema;
+    private String dbLocalUrl = dbProtocol + ":" + dbDriver + "://" + dbLocalHost + ":" + dbLocalPort + "/" + dbSchema;
 
     private JSch sch = new JSch();
     private Session session;
@@ -43,6 +43,12 @@ public final class Connector extends Thread implements Runnable {
 
     public Connector() {
 
+    }
+
+    public Connector(String url, String dbUsername, String dbPassword) {
+        this.dbLocalUrl = url;
+        this.dbUsername = dbUsername;
+        dbProperties.setPropertyObject("password", dbPassword.toCharArray());
     }
 
     public void connect(boolean usessh) {

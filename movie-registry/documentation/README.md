@@ -756,12 +756,73 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
       SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
     - A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
       keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
-      
-#### Tervezett adatbázissémák
 
-| movies      | directors | actors  | movies_directors | movies_actors | leases       |
-|-------------|-----------|---------|------------------|---------------|--------------|
-| id          | id        | id      | movie_id         | movie_id      | movie_id     |
-| title       | name      | name    | director_id      | actor_id      | leaser_name  |
-| release     |           |         |                  |               | lease_date   |
-| originality |           |         |                  |               |              |       
+##6. Tervezés
+
+1. A rendszer architectúrája
+
+2. Adatbázis terv
+
+| movies                                          |
+|-------------|-------------|---------------------|
+| id          | number(10)  | egyedi azonosító    |
+| title       | varchar(42) | cím                 |
+| release     | date        | megjelenés dátuma   |
+| originality | boolean     | eredetiség státusza |
+
+| directors                                       |
+|-------------|-------------|---------------------|
+| id          | number(10)  | egyedi azonosító    |
+| name        | varchar(42) | név                 |
+
+| actors                                          |
+|-------------|-------------|---------------------|
+| id          | number(10)  | egyedi azonosító    |
+| name        | varchar(42) | név                 |
+
+| movies_directors                                      |
+|-------------|------------|----------------------------|
+| movie_id    | number(10) | film egyedi azonosítója    |
+| director_id | number(10) | rendező egyedi azonosítója |
+
+| movies_actors                                         |
+|-------------|------------|----------------------------|
+| movie_id    | number(10) | film egyedi azonosítója    |
+| actor_id    | number(10) | színész egyedi azonosítója |
+
+| leases                                              |
+|-------------|----------.--|-------------------------|
+| movie_id    | number(10)  | film egyedi azonosítója |
+| leaser_name | varchar(42) | kölcsönző neve          |
+| lease_date  | date        | kölcsönzés időpontja    |
+
+![Entity Relationship](./database-entity-relationship.png)
+
+Statikus (Szerkezeti, Struktúrális) szempont szerinti nézetrendszer alapján
+Megmondja, hogy a rendszer milyen egységekből épül fel, mi ezeknek az egységeknek a feladata, milyen kapcsolatban vannak egymással a megoldás elérésének az érdekében. Jellemzően két féle diagramot szoktak használni a rendszer ezen szerkezetének leírásához:
+Osztálydiagram: a rendszer objektum elvű szerkezetének leírására
+Ismétléshez (Progtech 1): C-1 C-2 C-3
+További minta feladatok: http://valdar.web.elte.hu/progtech/
+Jelenjen meg a diagramon a láthatóság is!
+Objektumdiagram : az osztálydiagram egy példányát mutatja be
+Lásd: Programozási technológia 1. diasor és itt.
+Megjegyzés: Az ábrákat jól láthatóan kell elkészíteni, több részre bontva. Minden diagram alatt érdemes egy általánosabb leírást adni, hogy mit fog megvalósítani az adott osztály.
+Dinamikus szempont szerinti nézetrendszer alapján
+Megmondja, hogy a rendszer egyes részegységei hogyan viselkednek a probléma megoldása során. Az egységek milyen állapotokat vesznek fel, milyen események hatására változik az állapotuk, milyen a köztük lévő együttműködés mechanizmusa, időben hogyan zajlanak közöttük az üzenetcserék.
+Állapotdiagram: azt mutatja meg, hogy a rendszer milyen állapotokon keresztül, milyen átmenetekkel oldja meg a feladatot.
+Minta: Megtekintés
+Szekvenciadiagram : az objektumok közötti üzenetváltások időbeli menetét szemlélteti.
+Minta: Megtekintés
+Együttműködési diagram: az objektumoknak a probléma megoldásában való együttműködését mutatja be.
+Minta: Megtekintés
+Aktivációs diagram: a tevékenységek és az objektumok egymásra gyakorolt hatását fejezi ki (vezérlések, rendszerfunkciók).
+Minta: Megtekintés
+Környezeti szempont szerinti nézetrendszer alapján
+Konfigurációs diagram: a szoftverrendszer környezetének, a hardver-szoftver konfigurációnak a szemléltetésére szolgál.
+Felhasználói-felület modell
+Képernyőtervek készítése az alkalmazásról
+Hasznos eszközök a tervezéshez:
+Gliffy: Megtekintés
+yEd Graph Editor: Megtekintés
+Moqups: Megtekintés
+Általánosságban is elmondható, hogy nem csak diagramokat k

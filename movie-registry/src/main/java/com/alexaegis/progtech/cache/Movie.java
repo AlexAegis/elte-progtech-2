@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Movie {
 
-    private String name;
+    private String title;
     private int year;
     private String director;
     private List<String> actors = new ArrayList<>();
@@ -13,8 +13,8 @@ public class Movie {
 
     private String owner;
 
-    public Movie(String name, int year, String director) {
-        this.name = name;
+    public Movie(String title, int year, String director) {
+        this.title = title;
         this.year = year;
         this.director = director;
     }

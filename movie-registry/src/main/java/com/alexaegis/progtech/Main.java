@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 import static com.github.alexaegis.clipboard.ClipBoardReader.readFromClipBoard;
 
@@ -61,7 +60,7 @@ public final class Main {
         }
     }
 
-    private void updateProperties() {
+    public void updateProperties() {
         try {
             dbProperties.load(Main.class.getClassLoader().getResourceAsStream(dbprops));
             sshProperties.load(Main.class.getClassLoader().getResourceAsStream(sshprops));
@@ -97,4 +96,6 @@ public final class Main {
             e.printStackTrace();
         }
     }
+
+
 }
