@@ -7,6 +7,7 @@ Movie Repository (4. feladat)
 -----------------------------
 
 1. Bevezetés
+============
 
 A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
 Könnyű keresést és rendezési lehetőségeket biztosít a felhasználó személyes  filmjeihez. 
@@ -18,6 +19,7 @@ pedig a program képes biztonsági másolatot készíteni, esetleg egy üres ada
 megfelelő sémákkal inicializálni azt, biztonsági mentést fájlból betölteni.
 
 2. Feladatleírás
+================
 
 Készítsünk programot, amellyel otthoni adathordozón lévő filmjeinket tudjuk nyilván tartani az
 alábbi funkciókkal:
@@ -51,6 +53,7 @@ kalózmásolat.
 	- kölcsönzések (film, név, dátum)
 
 3. Követelményelemzés
+=====================
 
 Egy átlátható és könnyen kezelhető programot fogunk megvalósítani, mely egy futattható állományban
 fogja tudni ellátni a feladatait egy adatbázis segítségével. Képes lesz ezt az adatbázist magának megformázni
@@ -65,6 +68,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 
 4. Funkcionális követelmények
+=============================
 ### Use Case
  Általános felhasználás
 
@@ -699,6 +703,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 </table>
 
 5. Nem funkcionális követelmények
+=================================
 
 	1. Termék követelmények
 
@@ -762,6 +767,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 			keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
 
 6. Tervezés
+===========
 
 	1. A rendszer architectúrája
 
