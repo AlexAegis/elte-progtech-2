@@ -1,10 +1,14 @@
-﻿#Documentation
+﻿Documentation
+=============
 ###### Győri Sándor - AQV5AK
 ###### alexaegis@gmail.com
 
-##Movie Repository (4. feladat)
+Movie Repository (4. feladat)
+-----------------------------
 
 ##1. Bevezetés
+--------------
+
 A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
 Könnyű keresést és rendezési lehetőségeket biztosít a felhasználó személyes  filmjeihez. 
 Emelett lehetséges vele számontartani filmjeink állapotát úgy mint annak eredetisége és, 
@@ -14,7 +18,8 @@ eseményeket is felvehetünk melyeket a program az adatbázisban rögzít. Az ad
 pedig a program képes biztonsági másolatot készíteni, esetleg egy üres adatbázis esetén a
 megfelelő sémákkal inicializálni azt, biztonsági mentést fájlból betölteni.
 
-##2. Feladatleírás
+2. Feladatleírás
+---------------
 
 Készítsünk programot, amellyel otthoni adathordozón lévő filmjeinket tudjuk nyilván tartani az
 alábbi funkciókkal:
