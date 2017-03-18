@@ -6,8 +6,7 @@
 Movie Repository (4. feladat)
 -----------------------------
 
-##1. Bevezetés
---------------
+1. Bevezetés
 
 A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
 Könnyű keresést és rendezési lehetőségeket biztosít a felhasználó személyes  filmjeihez. 
@@ -19,7 +18,6 @@ pedig a program képes biztonsági másolatot készíteni, esetleg egy üres ada
 megfelelő sémákkal inicializálni azt, biztonsági mentést fájlból betölteni.
 
 2. Feladatleírás
----------------
 
 Készítsünk programot, amellyel otthoni adathordozón lévő filmjeinket tudjuk nyilván tartani az
 alábbi funkciókkal:
@@ -52,7 +50,7 @@ kalózmásolat.
 	- filmek (cím, rendező(k), főszereplő(k), megjelenés éve, eredetiség)
 	- kölcsönzések (film, név, dátum)
 
-##3. Követelményelemzés
+3. Követelményelemzés
 
 Egy átlátható és könnyen kezelhető programot fogunk megvalósítani, mely egy futattható állományban
 fogja tudni ellátni a feladatait egy adatbázis segítségével. Képes lesz ezt az adatbázist magának megformázni
@@ -66,7 +64,7 @@ növelve a program hordozhatóságát. Mivel a programot előre láthatóan hasz
 ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könnyedén felhasználhatják a programmal.
 
 
-##4. Funkcionális követelmények
+4. Funkcionális követelmények
 ### Use Case
  Általános felhasználás
 
@@ -700,110 +698,110 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	</tr>
 </table>
 
-##5. Nem funkcionális követelmények
+5. Nem funkcionális követelmények
 
-1. Termék követelmények
+	1. Termék követelmények
 
-	- A program Java 8 segítségével fog készülni így futtatásához mindenképpen szükség lesz a 
-	legfrissebb [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)-re.
-	- A program .jar csomagként kerül majd terjesztésre, helyi adatbázis esetén nem, távoli adatbázis esetén
-	szükség lesz aktív internetkapcsolatra. 
-	
-	- A program futtatásához legfeljebb kiszabható követelmények:
-			- Windows vagy egyéb, java alkalmazások futtatására alkalmas operációs rendszer
-			- Telepített Java Runtime Environment
-			- mySQL adatbázis (Lehetséges, hogy később egy hordozhatóbb megoldással is előállunk)
-			- 1376 x 768 felbontás
-			- 512 MB RAM
-	
-	- A programnak a futattó környezet lehetőségeihez mérten azonnal el kell indulnia, az alapértelmezett
-	adatbáziskapcsolatot induláskor egyől megkísérli létrehozni de külön szálon, így a felhasználói felület
-	előbb betölthet
-	- Az felhasználói felületnek reszponzívnak kell lennie
-	- A felhasználói felületnek jól tagoltnak kell lenni, a gombok, menüpontok ikonokkal lesznek
-	ellátva
-	- A program összes funkcionalitása elérhető a saját .jar csomagjából. Bármilyen más fájlt akar még 
-	kezelni, azt létre is kell tudni hoznia
-	- A program az futtató környezet alapértelmezett Java Look & Feel-je szerint fog megjelenni
- 
-2. Szervezeti követelmények
-
-	- A program fejlesztése a JetBrains IntelliJ IDEA fejlesztői környezetben fog zajlani, az adatbázis
-	kezeléséhez pedig a JetBrains DataGrip nevű szoftverét használjuk, hogy a program funkciót
-	megfelelően monitorozni tudjuk.
-	
-	- A fejlesztés a Clean Code alapelveinek megfelelően és TDD szerint fog zajlani.
-	
-	- A fejlesztés az alábbi határidők mentén fog haladni:
-			1. beadandó: Dokumentáció - 2017.02.27
-			2. beadandó: Statikus terv - 2017.03.20.
-			3. beadandó: Részleges prototípus tesztelés - 2017.04.17.
-			4. beadandó: Teljes megvalósítás, teszteléssel - 2017.05.08.
-			
-	- A fejlesztés folyamata Git segítségével lesz vezetve, online folyamatosan megtekinthető 
-	az következő helyen:
-	https://github.com/AlexAegis/elte-progtech-2/blob/master/movie-repository/
-	
-	- A program buildeléséhez, dependenciáinak kezeléséhez Maven-t fogunk használni.
-	Ennek kezeléséről, és a GitHub integrációjárol itt lehet többet megtudni:
-	https://github.com/AlexAegis/maven-repository
-	
-	- A program fejlesztése során a Caesar rendszer által szolgáltatott mySQL adatbázis-t fogjuk használni
+		- A program Java 8 segítségével fog készülni így futtatásához mindenképpen szükség lesz a 
+		legfrissebb [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)-re.
+		- A program .jar csomagként kerül majd terjesztésre, helyi adatbázis esetén nem, távoli adatbázis esetén
+		szükség lesz aktív internetkapcsolatra. 
 		
-3. Külső követelmények
+		- A program futtatásához legfeljebb kiszabható követelmények:
+				- Windows vagy egyéb, java alkalmazások futtatására alkalmas operációs rendszer
+				- Telepített Java Runtime Environment
+				- mySQL adatbázis (Lehetséges, hogy később egy hordozhatóbb megoldással is előállunk)
+				- 1376 x 768 felbontás
+				- 512 MB RAM
+		
+		- A programnak a futattó környezet lehetőségeihez mérten azonnal el kell indulnia, az alapértelmezett
+		adatbáziskapcsolatot induláskor egyől megkísérli létrehozni de külön szálon, így a felhasználói felület
+		előbb betölthet
+		- Az felhasználói felületnek reszponzívnak kell lennie
+		- A felhasználói felületnek jól tagoltnak kell lenni, a gombok, menüpontok ikonokkal lesznek
+		ellátva
+		- A program összes funkcionalitása elérhető a saját .jar csomagjából. Bármilyen más fájlt akar még 
+		kezelni, azt létre is kell tudni hoznia
+		- A program az futtató környezet alapértelmezett Java Look & Feel-je szerint fog megjelenni
+	 
+	2. Szervezeti követelmények
 
-	- A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
-		dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
-		Maven segítségével fogjuk buildelni.
-	- A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
-		Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
-		dependecia fog szolgáltatni.
-		Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
-		SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
-	- A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
-		keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
+		- A program fejlesztése a JetBrains IntelliJ IDEA fejlesztői környezetben fog zajlani, az adatbázis
+		kezeléséhez pedig a JetBrains DataGrip nevű szoftverét használjuk, hogy a program funkciót
+		megfelelően monitorozni tudjuk.
+		
+		- A fejlesztés a Clean Code alapelveinek megfelelően és TDD szerint fog zajlani.
+		
+		- A fejlesztés az alábbi határidők mentén fog haladni:
+				1. beadandó: Dokumentáció - 2017.02.27
+				2. beadandó: Statikus terv - 2017.03.20.
+				3. beadandó: Részleges prototípus tesztelés - 2017.04.17.
+				4. beadandó: Teljes megvalósítás, teszteléssel - 2017.05.08.
+				
+		- A fejlesztés folyamata Git segítségével lesz vezetve, online folyamatosan megtekinthető 
+		az következő helyen:
+		https://github.com/AlexAegis/elte-progtech-2/blob/master/movie-repository/
+		
+		- A program buildeléséhez, dependenciáinak kezeléséhez Maven-t fogunk használni.
+		Ennek kezeléséről, és a GitHub integrációjárol itt lehet többet megtudni:
+		https://github.com/AlexAegis/maven-repository
+		
+		- A program fejlesztése során a Caesar rendszer által szolgáltatott mySQL adatbázis-t fogjuk használni
+			
+	3. Külső követelmények
 
-##6. Tervezés
+		- A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
+			dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
+			Maven segítségével fogjuk buildelni.
+		- A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
+			Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
+			dependecia fog szolgáltatni.
+			Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
+			SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
+		- A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
+			keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
 
-1. A rendszer architectúrája
+6. Tervezés
 
-2. Adatbázis terv
+	1. A rendszer architectúrája
 
-	- Adatbázis sémák
+	2. Adatbázis terv
 
-| movies      |             |                     |
-|-------------|-------------|---------------------|
-| id          | number(10)  | egyedi azonosító    |
-| title       | varchar(42) | cím                 |
-| release     | date        | megjelenés dátuma   |
-| originality | boolean     | eredetiség státusza |
+		- Adatbázis sémák
 
-| directors   |             |                     |
-|-------------|-------------|---------------------|
-| id          | number(10)  | egyedi azonosító    |
-| name        | varchar(42) | név                 |
+	| movies      |             |                     |
+	|-------------|-------------|---------------------|
+	| id          | number(10)  | egyedi azonosító    |
+	| title       | varchar(42) | cím                 |
+	| release     | date        | megjelenés dátuma   |
+	| originality | boolean     | eredetiség státusza |
 
-| actors      |             |                     |
-|-------------|-------------|---------------------|
-| id          | number(10)  | egyedi azonosító    |
-| name        | varchar(42) | név                 |
+	| directors   |             |                     |
+	|-------------|-------------|---------------------|
+	| id          | number(10)  | egyedi azonosító    |
+	| name        | varchar(42) | név                 |
 
-| movies_directors|        |                            |
-|-------------|------------|----------------------------|
-| movie_id    | number(10) | film egyedi azonosítója    |
-| director_id | number(10) | rendező egyedi azonosítója |
+	| actors      |             |                     |
+	|-------------|-------------|---------------------|
+	| id          | number(10)  | egyedi azonosító    |
+	| name        | varchar(42) | név                 |
 
-| movies_actors|           |                            |
-|-------------|------------|----------------------------|
-| movie_id    | number(10) | film egyedi azonosítója    |
-| actor_id    | number(10) | színész egyedi azonosítója |
+	| movies_directors|        |                            |
+	|-------------|------------|----------------------------|
+	| movie_id    | number(10) | film egyedi azonosítója    |
+	| director_id | number(10) | rendező egyedi azonosítója |
 
-| leases      |             |                         |
-|-------------|-------------|-------------------------|
-| movie_id    | number(10)  | film egyedi azonosítója |
-| leaser_name | varchar(42) | kölcsönző neve          |
-| lease_date  | date        | kölcsönzés időpontja    |
+	| movies_actors|           |                            |
+	|-------------|------------|----------------------------|
+	| movie_id    | number(10) | film egyedi azonosítója    |
+	| actor_id    | number(10) | színész egyedi azonosítója |
 
-	- Egyed-kapcsolat diagram
+	| leases      |             |                         |
+	|-------------|-------------|-------------------------|
+	| movie_id    | number(10)  | film egyedi azonosítója |
+	| leaser_name | varchar(42) | kölcsönző neve          |
+	| lease_date  | date        | kölcsönzés időpontja    |
 
-![Entity Relationship](./database-entity-relationship.png)
+		- Egyed-kapcsolat diagram
+
+	![Entity Relationship](./database-entity-relationship.png)
