@@ -6,8 +6,7 @@
 Movie Repository (4. feladat)
 -----------------------------
 
-1. Bevezetés
-============
+###1. Bevezetés
 
 A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
 Könnyű keresést és rendezési lehetőségeket biztosít a felhasználó személyes  filmjeihez. 
@@ -18,8 +17,7 @@ eseményeket is felvehetünk melyeket a program az adatbázisban rögzít. Az ad
 pedig a program képes biztonsági másolatot készíteni, esetleg egy üres adatbázis esetén a
 megfelelő sémákkal inicializálni azt, biztonsági mentést fájlból betölteni.
 
-2. Feladatleírás
-================
+###2. Feladatleírás
 
 Készítsünk programot, amellyel otthoni adathordozón lévő filmjeinket tudjuk nyilván tartani az
 alábbi funkciókkal:
@@ -52,8 +50,7 @@ kalózmásolat.
 	- filmek (cím, rendező(k), főszereplő(k), megjelenés éve, eredetiség)
 	- kölcsönzések (film, név, dátum)
 
-3. Követelményelemzés
-=====================
+###3. Követelményelemzés
 
 Egy átlátható és könnyen kezelhető programot fogunk megvalósítani, mely egy futattható állományban
 fogja tudni ellátni a feladatait egy adatbázis segítségével. Képes lesz ezt az adatbázist magának megformázni
@@ -67,10 +64,9 @@ növelve a program hordozhatóságát. Mivel a programot előre láthatóan hasz
 ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könnyedén felhasználhatják a programmal.
 
 
-4. Funkcionális követelmények
-=============================
-### Use Case
- Általános felhasználás
+###4. Funkcionális követelmények
+#### Use Case
+Általános felhasználás
 
 ![use_case](./usecasediag.png)
 
@@ -90,9 +86,9 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 ######***A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.***
 
-### User Stories
+#### User Stories
 
-#### Filmlistával kapcsolatos User Story-k
+##### Filmlistával kapcsolatos User Story-k
 
 <table>
 	<tr>
@@ -340,7 +336,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	</tr>
 </table>
  
-#### Kölcsönzésekkel kapcsolatos User Story-k
+##### Kölcsönzésekkel kapcsolatos User Story-k
 
 <table>
 	<tr>
@@ -522,7 +518,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	</tr>
 </table>
 
-#### Biztonsági funkciókkal kapcsolatos User Story-k
+##### Biztonsági funkciókkal kapcsolatos User Story-k
 
 <table>
 	<tr>
@@ -702,8 +698,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	</tr>
 </table>
 
-5. Nem funkcionális követelmények
-=================================
+###5. Nem funkcionális követelmények
 
 	1. Termék követelmények
 
@@ -766,8 +761,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 		- A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
 			keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
 
-6. Tervezés
-===========
+###6. Tervezés
 
 	1. A rendszer architectúrája
 
