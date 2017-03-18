@@ -766,35 +766,35 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 	- Adatbázis sémák
 
-| movies                                          |
+| movies      |             |                     |
 |-------------|-------------|---------------------|
 | id          | number(10)  | egyedi azonosító    |
 | title       | varchar(42) | cím                 |
 | release     | date        | megjelenés dátuma   |
 | originality | boolean     | eredetiség státusza |
 
-| directors                                       |
+| directors   |             |                     |
 |-------------|-------------|---------------------|
 | id          | number(10)  | egyedi azonosító    |
 | name        | varchar(42) | név                 |
 
-| actors                                          |
+| actors      |             |                     |
 |-------------|-------------|---------------------|
 | id          | number(10)  | egyedi azonosító    |
 | name        | varchar(42) | név                 |
 
-| movies_directors                                      |
+| movies_directors|        |                            |
 |-------------|------------|----------------------------|
 | movie_id    | number(10) | film egyedi azonosítója    |
 | director_id | number(10) | rendező egyedi azonosítója |
 
-| movies_actors                                         |
+| movies_actors|           |                            |
 |-------------|------------|----------------------------|
 | movie_id    | number(10) | film egyedi azonosítója    |
 | actor_id    | number(10) | színész egyedi azonosítója |
 
-| leases                                              |
-|-------------|----------.--|-------------------------|
+| leases      |             |                         |
+|-------------|-------------|-------------------------|
 | movie_id    | number(10)  | film egyedi azonosítója |
 | leaser_name | varchar(42) | kölcsönző neve          |
 | lease_date  | date        | kölcsönzés időpontja    |
