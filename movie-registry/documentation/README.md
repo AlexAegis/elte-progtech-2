@@ -768,15 +768,18 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	2. Adatbázis terv
 
 		- Adatbázis sémák
-		
-​```mermaid
-graph LR
-A[Hard edge] -->B(Round edge)
-    B --> C{Decision}
-    C -->|One| D[Result one]
-    C -->|Two| E[Result two]
-​```
-		
+	
+NOTES:
+adatbgrafikon
+F csirkeláb -> P (a movie id, mezőjéhez) F foreign key, P Primary key
+
+
+
+bigint -> java long
+umldiagram
+argouml notations java
+
+argoban vonalon van a mező láthatósággal, csirkeláb helyett üres rombusz, másik végén üres kétágú nyíl
 
 	| movies      |             |                     |
 	|-------------|-------------|---------------------|
@@ -798,8 +801,10 @@ A[Hard edge] -->B(Round edge)
 	| movies_directors |            |                            |
 	|------------------|------------|----------------------------|
 	| id               | bigint     | egyedi azonosító           |
-	| movie_id         | bigint     | film egyedi azonosítója    |
+	| movie_id         | bigint     | film egyedi azonosítója    | 
 	| director_id      | bigint     | rendező egyedi azonosítója |
+	
+
 
 	| movies_actors |            |                            |
 	|---------------|------------|----------------------------|
