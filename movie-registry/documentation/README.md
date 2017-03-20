@@ -768,37 +768,49 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	2. Adatbázis terv
 
 		- Adatbázis sémák
+		
+​```mermaid
+graph LR
+A[Hard edge] -->B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+​```
+		
 
 	| movies      |             |                     |
 	|-------------|-------------|---------------------|
-	| id          | number(10)  | egyedi azonosító    |
+	| id          | bigint      | egyedi azonosító    |
 	| title       | varchar(42) | cím                 |
 	| release     | date        | megjelenés dátuma   |
 	| originality | boolean     | eredetiség státusza |
 
 	| directors   |             |                     |
 	|-------------|-------------|---------------------|
-	| id          | number(10)  | egyedi azonosító    |
+	| id          | bigint      | egyedi azonosító    |
 	| name        | varchar(42) | név                 |
 
 	| actors      |             |                     |
 	|-------------|-------------|---------------------|
-	| id          | number(10)  | egyedi azonosító    |
+	| id          | bigint      | egyedi azonosító    |
 	| name        | varchar(42) | név                 |
 
-	| movies_directors|        |                            |
-	|-------------|------------|----------------------------|
-	| movie_id    | number(10) | film egyedi azonosítója    |
-	| director_id | number(10) | rendező egyedi azonosítója |
+	| movies_directors |            |                            |
+	|------------------|------------|----------------------------|
+	| id               | bigint     | egyedi azonosító           |
+	| movie_id         | bigint     | film egyedi azonosítója    |
+	| director_id      | bigint     | rendező egyedi azonosítója |
 
-	| movies_actors|           |                            |
-	|-------------|------------|----------------------------|
-	| movie_id    | number(10) | film egyedi azonosítója    |
-	| actor_id    | number(10) | színész egyedi azonosítója |
+	| movies_actors |            |                            |
+	|---------------|------------|----------------------------|
+	| id            | bigint     | egyedi azonosító           |
+	| movie_id      | bigint     | film egyedi azonosítója    |
+	| actor_id      | bigint     | színész egyedi azonosítója |
 
 	| leases      |             |                         |
 	|-------------|-------------|-------------------------|
-	| movie_id    | number(10)  | film egyedi azonosítója |
+	| id          | bigint      | egyedi azonosító        |
+	| movie_id    | bigint      | film egyedi azonosítója |
 	| leaser_name | varchar(42) | kölcsönző neve          |
 	| lease_date  | date        | kölcsönzés időpontja    |
 
