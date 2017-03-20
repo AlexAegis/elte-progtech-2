@@ -6,7 +6,7 @@
 Movie Repository (4. feladat)
 -----------------------------
 
-###1. Bevezetés
+<h2>1. Bevezetés</h2>
 
 A program grafikus felület segítségével enged kezelni egy filmeket nyilvántartó adatbázist. 
 Könnyű keresést és rendezési lehetőségeket biztosít a felhasználó személyes  filmjeihez. 
@@ -17,7 +17,7 @@ eseményeket is felvehetünk melyeket a program az adatbázisban rögzít. Az ad
 pedig a program képes biztonsági másolatot készíteni, esetleg egy üres adatbázis esetén a
 megfelelő sémákkal inicializálni azt, biztonsági mentést fájlból betölteni.
 
-###2. Feladatleírás
+<h2>2. Feladatleírás</h2>
 
 Készítsünk programot, amellyel otthoni adathordozón lévő filmjeinket tudjuk nyilván tartani az
 alábbi funkciókkal:
@@ -50,7 +50,7 @@ kalózmásolat.
 	- filmek (cím, rendező(k), főszereplő(k), megjelenés éve, eredetiség)
 	- kölcsönzések (film, név, dátum)
 
-###3. Követelményelemzés
+<h2>3. Követelményelemzés</h2>
 
 Egy átlátható és könnyen kezelhető programot fogunk megvalósítani, mely egy futattható állományban
 fogja tudni ellátni a feladatait egy adatbázis segítségével. Képes lesz ezt az adatbázist magának megformázni
@@ -64,7 +64,7 @@ növelve a program hordozhatóságát. Mivel a programot előre láthatóan hasz
 ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könnyedén felhasználhatják a programmal.
 
 
-###4. Funkcionális követelmények
+<h2>4. Funkcionális követelmények</h2>
 #### Use Case
 Általános felhasználás
 
@@ -698,7 +698,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	</tr>
 </table>
 
-###5. Nem funkcionális követelmények
+5. Nem funkcionális követelmények
 
 	1. Termék követelmények
 
@@ -761,7 +761,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 		- A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
 			keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
 
-###6. Tervezés
+6. Tervezés
 
 	1. A rendszer architectúrája
 
