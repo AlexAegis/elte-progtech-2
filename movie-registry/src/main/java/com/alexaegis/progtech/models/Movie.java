@@ -7,7 +7,7 @@ import java.util.Vector;
 
 public class Movie {
 
-    private int id;
+    private long id;
     private String title;
     private Date release;
     private List<Person> directors = new ArrayList<>();
@@ -16,7 +16,7 @@ public class Movie {
     private String owner;
     private boolean legal;
 
-    public Movie(int id, String title, Date release) {
+    public Movie(long id, String title, Date release) {
         this.id = id;
         this.title = title;
         this.release = release;
@@ -57,7 +57,7 @@ public class Movie {
         return title;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
