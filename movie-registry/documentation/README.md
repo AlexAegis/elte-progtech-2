@@ -763,46 +763,46 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 <h2>6. Tervezés</h2>
 
-	1. A rendszer architectúrája
+1. A rendszer architectúrája
 
-	2. Adatbázis terv
+2. Adatbázis terv
 
-		- Adatbázis sémák
+	- Adatbázis sémák
 
-	| movies      |             |                     |
-	|-------------|-------------|---------------------|
-	| id          | bigint      | egyedi azonosító    |
-	| title       | varchar(45) | cím                 |
-	| release     | date        | megjelenés dátuma   |
-	| originality | boolean     | eredetiség státusza |
+| movies      |             |                     |
+|-------------|-------------|---------------------|
+| id          | bigint      | egyedi azonosító    |
+| title       | varchar(45) | cím                 |
+| release     | date        | megjelenés dátuma   |
+| originality | boolean     | eredetiség státusza |
 
-	| people      |             |                     |
-	|-------------|-------------|---------------------|
-	| id          | bigint      | egyedi azonosító    |
-	| name        | varchar(45) | név                 |
-	| type        | varchar(45) | típus (foglalkozás) |
+| people      |             |                     |
+|-------------|-------------|---------------------|
+| id          | bigint      | egyedi azonosító    |
+| name        | varchar(45) | név                 |
+| type        | varchar(45) | típus (foglalkozás) |
 
-	| movies_directors |            |                            |
-	|------------------|------------|----------------------------|
-	| id               | bigint     | egyedi azonosító           |
-	| movie_id         | bigint     | film egyedi azonosítója    | 
-	| director_id      | bigint     | rendező egyedi azonosítója |
-	
+| movies_directors |            |                            |
+|------------------|------------|----------------------------|
+| id               | bigint     | egyedi azonosító           |
+| movie_id         | bigint     | film egyedi azonosítója    | 
+| director_id      | bigint     | rendező egyedi azonosítója |
 
-	| movies_actors |            |                            |
-	|---------------|------------|----------------------------|
-	| id            | bigint     | egyedi azonosító           |
-	| movie_id      | bigint     | film egyedi azonosítója    |
-	| actor_id      | bigint     | színész egyedi azonosítója |
 
-	| leases      |             |                         |
-	|-------------|-------------|-------------------------|
-	| id          | bigint      | egyedi azonosító        |
-	| movie_id    | bigint      | film egyedi azonosítója |
-	| name        | varchar(45) | kölcsönző neve          |
-	| date        | date        | kölcsönzés időpontja    |
+| movies_actors |            |                            |
+|---------------|------------|----------------------------|
+| id            | bigint     | egyedi azonosító           |
+| movie_id      | bigint     | film egyedi azonosítója    |
+| actor_id      | bigint     | színész egyedi azonosítója |
 
-		- Egyed-kapcsolat diagram
+| leases      |             |                         |
+|-------------|-------------|-------------------------|
+| id          | bigint      | egyedi azonosító        |
+| movie_id    | bigint      | film egyedi azonosítója |
+| name        | varchar(45) | kölcsönző neve          |
+| date        | date        | kölcsönzés időpontja    |
 
-	![Entity Relationship](./database-entity-relationship.png)
+	- Egyed-kapcsolat diagram
+
+![Entity Relationship](./database-entity-relationship.png)
 
