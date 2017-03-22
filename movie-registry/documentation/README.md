@@ -768,35 +768,19 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	2. Adatbázis terv
 
 		- Adatbázis sémák
-	
-NOTES:
-adatbgrafikon
-F csirkeláb -> P (a movie id, mezőjéhez) F foreign key, P Primary key
-
-
-
-bigint -> java long
-umldiagram
-argouml notations java
-
-argoban vonalon van a mező láthatósággal, csirkeláb helyett üres rombusz, másik végén üres kétágú nyíl
 
 	| movies      |             |                     |
 	|-------------|-------------|---------------------|
 	| id          | bigint      | egyedi azonosító    |
-	| title       | varchar(42) | cím                 |
+	| title       | varchar(45) | cím                 |
 	| release     | date        | megjelenés dátuma   |
 	| originality | boolean     | eredetiség státusza |
 
-	| directors   |             |                     |
+	| people      |             |                     |
 	|-------------|-------------|---------------------|
 	| id          | bigint      | egyedi azonosító    |
-	| name        | varchar(42) | név                 |
-
-	| actors      |             |                     |
-	|-------------|-------------|---------------------|
-	| id          | bigint      | egyedi azonosító    |
-	| name        | varchar(42) | név                 |
+	| name        | varchar(45) | név                 |
+	| type        | varchar(45) | típus (foglalkozás) |
 
 	| movies_directors |            |                            |
 	|------------------|------------|----------------------------|
@@ -804,7 +788,6 @@ argoban vonalon van a mező láthatósággal, csirkeláb helyett üres rombusz, 
 	| movie_id         | bigint     | film egyedi azonosítója    | 
 	| director_id      | bigint     | rendező egyedi azonosítója |
 	
-
 
 	| movies_actors |            |                            |
 	|---------------|------------|----------------------------|
@@ -816,9 +799,11 @@ argoban vonalon van a mező láthatósággal, csirkeláb helyett üres rombusz, 
 	|-------------|-------------|-------------------------|
 	| id          | bigint      | egyedi azonosító        |
 	| movie_id    | bigint      | film egyedi azonosítója |
-	| leaser_name | varchar(42) | kölcsönző neve          |
-	| lease_date  | date        | kölcsönzés időpontja    |
+	| name        | varchar(45) | kölcsönző neve          |
+	| date        | date        | kölcsönzés időpontja    |
 
 		- Egyed-kapcsolat diagram
 
 	![Entity Relationship](./database-entity-relationship.png)
+
+	
