@@ -764,18 +764,11 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 | name        | varchar(45) | név                 |
 | type        | varchar(45) | típus (foglalkozás) |
 
-| movies_directors |            |                            |
+| movies_people    |            |                            |
 |------------------|------------|----------------------------|
 | id               | bigint     | egyedi azonosító           |
 | movie_id         | bigint     | film egyedi azonosítója    | 
-| director_id      | bigint     | rendező egyedi azonosítója |
-
-
-| movies_actors |            |                            |
-|---------------|------------|----------------------------|
-| id            | bigint     | egyedi azonosító           |
-| movie_id      | bigint     | film egyedi azonosítója    |
-| actor_id      | bigint     | színész egyedi azonosítója |
+| person_id        | bigint     | személy egyedi azonosítója |
 
 | leases      |             |                         |
 |-------------|-------------|-------------------------|
@@ -805,4 +798,4 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 - Connect window
 
 ![connect_menu](./connectmenu_prototype.png)
- <h5>***A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.***</h5>
+ <h5>A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.</h5>
