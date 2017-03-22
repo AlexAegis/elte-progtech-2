@@ -698,7 +698,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 	</tr>
 </table>
 
-5. Nem funkcionális követelmények
+<h2>5. Nem funkcionális követelmények</h2>
 
 	1. Termék követelmények
 
@@ -761,7 +761,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 		- A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
 			keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
 
-6. Tervezés
+<h2>6. Tervezés</h2>
 
 	1. A rendszer architectúrája
 
@@ -806,4 +806,3 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 	![Entity Relationship](./database-entity-relationship.png)
 
-	
