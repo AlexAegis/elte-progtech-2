@@ -21,7 +21,7 @@ public class Movie {
         this.title = title;
         this.release = release;
     }
-
+    //addPerson
     public void addDirector(Person director) {
         directors.add(director);
     }

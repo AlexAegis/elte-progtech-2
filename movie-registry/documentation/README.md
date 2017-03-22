@@ -70,22 +70,6 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 ![use_case](./usecasediag.png)
 
- Felülettervezet 
-
-- Teljes ablak
-
-![main_window_full](./mainwindowfull_prototype.png)
-
-- Connection menu
-
-![main_window](./mainwindow_prototype.png)
-
-- Connect window
-
-![connect_menu](./connectmenu_prototype.png)
-
-######***A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.***
-
 #### User Stories
 
 ##### Filmlistával kapcsolatos User Story-k
@@ -763,9 +747,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 <h2>6. Tervezés</h2>
 
-1. A rendszer architectúrája
-
-2. Adatbázis terv
+1. Adatbázis terv
 
 	- Adatbázis sémák
 
@@ -806,3 +788,22 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 ![Entity Relationship](./database-entity-relationship.png)
 
+2. Osztálydiagram
+
+![Class Diagram](./classdiagram.png)
+
+3. Felületterv
+
+- Teljes ablak
+
+![main_window_full](./mainwindowfull_prototype.png)
+
+- Connection menu
+
+![main_window](./mainwindow_prototype.png)
+
+- Connect window
+
+![connect_menu](./connectmenu_prototype.png)
+
+######***A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.***

@@ -6,19 +6,19 @@ import java.util.Date;
 
 public class Person {
 
-    private int id;
+    private long id;
     private String name;
     private Date birth;
     private PersonTypes type;
 
-    public Person(int id, String name, Date birth, PersonTypes type) {
+    public Person(long id, String name, Date birth, PersonTypes type) {
         this.id = id;
         this.name = name;
         this.birth = birth;
         this.type = type;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -54,7 +54,7 @@ public class Person {
         return birth;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 }
