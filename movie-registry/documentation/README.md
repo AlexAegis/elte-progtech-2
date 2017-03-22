@@ -749,7 +749,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 1. Adatbázis terv
 
-	- Adatbázis sémák
+- Adatbázis sémák
 
 | movies      |             |                     |
 |-------------|-------------|---------------------|
@@ -784,7 +784,7 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 | name        | varchar(45) | kölcsönző neve          |
 | date        | date        | kölcsönzés időpontja    |
 
-	- Egyed-kapcsolat diagram
+- Egyed-kapcsolat diagram
 
 ![Entity Relationship](./database-entity-relationship.png)
 
@@ -805,5 +805,4 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 - Connect window
 
 ![connect_menu](./connectmenu_prototype.png)
-
-######***A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.***
+ <h5>***A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.***</h5>
