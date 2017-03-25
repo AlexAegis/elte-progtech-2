@@ -11,8 +11,6 @@ import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static com.github.alexaegis.clipboard.ClipBoardReader.readFromClipBoard;
-
 public final class Main {
 
     private final String dbprops = "database.properties";

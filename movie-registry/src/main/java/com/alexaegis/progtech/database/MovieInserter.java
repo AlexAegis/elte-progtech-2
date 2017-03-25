@@ -2,14 +2,13 @@ package com.alexaegis.progtech.database;
 
 import com.alexaegis.progtech.misc.IllegalMovieException;
 import com.alexaegis.progtech.models.Movie;
-import com.alexaegis.progtech.models.Person;
+import com.alexaegis.progtech.models.people.Person;
+import com.alexaegis.progtech.models.people.PersonTypes;
 
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.lang.Thread.sleep;
@@ -157,7 +156,7 @@ public class MovieInserter {
         if(!present) {
             addNewMoviePersonRelation(person, movieId);
             movieIds.add(movieId);
-            personIds.add(person.getId());
+            //personIds.add(person.getId());
         }
     }
 

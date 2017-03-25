@@ -1,10 +1,10 @@
 package com.alexaegis.progtech.window;
 
 import com.alexaegis.progtech.database.Connector;
+import com.alexaegis.progtech.logic.ResizeableElement;
 import com.alexaegis.progtech.logic.controller.KeyboardController;
 import com.alexaegis.progtech.window.panels.*;
 import com.alexaegis.progtech.window.panels.MenuBar;
-import com.github.alexaegis.swing.ResizeableElement;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.awt.event.ComponentListener;
 import java.io.IOException;
 import java.util.Properties;
 
-import static com.github.alexaegis.swing.ComponentTools.findComponents;
+import static com.alexaegis.progtech.misc.ComponentTools.findComponents;
 
 public final class MainWindow extends JFrame implements ComponentListener {
 

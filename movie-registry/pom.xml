@@ -48,16 +48,19 @@
         <artifactId>easymock</artifactId>
         <version>3.4</version>
     </dependency>
+    <!--
     <dependency>
         <groupId>com.github.alexaegis</groupId>
         <artifactId>toolbox</artifactId>
         <version>LATEST</version>
     </dependency>
+-->
     <dependency>
         <groupId>org.apache.derby</groupId>
         <artifactId>derby</artifactId>
         <version>10.13.1.1</version>
     </dependency>
+
 </dependencies>
 
 <build>

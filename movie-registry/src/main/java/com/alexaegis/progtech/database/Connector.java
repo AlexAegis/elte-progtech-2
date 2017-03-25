@@ -1,19 +1,17 @@
 package com.alexaegis.progtech.database;
 
-import com.github.alexaegis.swing.Updatable;
+import com.alexaegis.progtech.logic.Updatable;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 import java.sql.*;
-import java.util.Arrays;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import static com.alexaegis.progtech.Main.dbProperties;
 import static com.alexaegis.progtech.Main.sshProperties;
+import static com.alexaegis.progtech.misc.ComponentTools.findComponents;
 import static com.alexaegis.progtech.window.MainWindow.windowContent;
-import static com.github.alexaegis.swing.ComponentTools.findComponents;
 
 public final class Connector extends Thread implements Runnable {
 

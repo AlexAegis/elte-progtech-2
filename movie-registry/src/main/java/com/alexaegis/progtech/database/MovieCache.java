@@ -1,7 +1,10 @@
 package com.alexaegis.progtech.database;
 
+import com.alexaegis.progtech.misc.PersonException;
 import com.alexaegis.progtech.models.Movie;
-import com.alexaegis.progtech.models.Person;
+import com.alexaegis.progtech.models.people.Person;
+import com.alexaegis.progtech.models.people.PersonFactory;
+import com.alexaegis.progtech.models.people.PersonTypes;
 
 import java.sql.Date;
 import java.util.Vector;
@@ -49,12 +52,12 @@ public class MovieCache extends Cache {
                 super.update();
                 Vector<Person> directors = new Vector<>();
                 for(int j = 0; j < super.getData().size(); j++) {
-                    directors.add(new Person((int) super.getData().get(j).get(0),
+                    directors.add(PersonFactory.createDirector(
+                            (int) super.getData().get(j).get(0),
                             (String) super.getData().get(j).get(1),
-                            (Date) super.getData().get(j).get(2),
-                            PersonTypes.DIRECTOR));
+                            (Date) super.getData().get(j).get(2)));
                 }
-                directors.forEach(movie::addDirector);
+                directors.forEach(movie::addPerson);
 
                 setQuery("SELECT actors.id, actors.Name, actors.Birth FROM actors\n" +
                         "JOIN movies_actors ON movies_actors.actor_id = actors.id\n" +
@@ -62,15 +65,18 @@ public class MovieCache extends Cache {
                 super.update();
                 Vector<Person> actors = new Vector<>();
                 for(int j = 0; j < super.getData().size(); j++) {
-                    actors.add(new Person((int) super.getData().get(j).get(0),
+                    Date date = (Date) super.getData().get(j).get(2);
+                    actors.add(PersonFactory.createActor(
+                            (int) super.getData().get(j).get(0),
                             (String) super.getData().get(j).get(1),
-                            (Date) super.getData().get(j).get(2),
-                            PersonTypes.ACTOR));
+                            (Date) super.getData().get(j).get(2)));
                 }
-                actors.forEach(movie::addActor);
+                actors.forEach(movie::addPerson);
                 movies.add(movie);
             } catch (ClassCastException e) {
                 System.out.println("Failed to parse movie");
+                e.printStackTrace();
+            } catch (PersonException e) {
                 e.printStackTrace();
             } finally {
                 setQuery("SELECT * FROM movies");

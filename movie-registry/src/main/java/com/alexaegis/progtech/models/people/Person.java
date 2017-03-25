@@ -1,17 +1,15 @@
-package com.alexaegis.progtech.models;
-
-import com.alexaegis.progtech.database.PersonTypes;
+package com.alexaegis.progtech.models.people;
 
 import java.util.Date;
 
 public class Person {
 
     private long id;
-    private String name;
+    private Name name;
     private Date birth;
     private PersonTypes type;
 
-    public Person(long id, String name, Date birth, PersonTypes type) {
+    public Person(long id, Name name, Date birth, PersonTypes type) {
         this.id = id;
         this.name = name;
         this.birth = birth;
@@ -29,20 +27,27 @@ public class Person {
 
         Person person = (Person) o;
 
-        return name != null ? name.equals(person.name) : person.name == null;
+        if (id != person.id) return false;
+        if (name != null ? !name.equals(person.name) : person.name != null) return false;
+        if (birth != null ? !birth.equals(person.birth) : person.birth != null) return false;
+        return type == person.type;
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (birth != null ? birth.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return name;
+        return name.toString();
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 

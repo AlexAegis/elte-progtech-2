@@ -1,11 +1,11 @@
 package com.alexaegis.progtech.database;
 
-import com.github.alexaegis.swing.Updatable;
+
+import com.alexaegis.progtech.logic.Updatable;
 
 import java.sql.*;
 import java.util.List;
 import java.util.Vector;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Cache implements Updatable {

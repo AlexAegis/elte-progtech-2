@@ -3,8 +3,8 @@ package com.alexaegis.progtech.window.panels;
 import com.alexaegis.progtech.database.Cache;
 import com.alexaegis.progtech.database.Connector;
 import com.alexaegis.progtech.database.MovieCache;
-import com.github.alexaegis.swing.ResizeableElement;
-import com.github.alexaegis.swing.Updatable;
+import com.alexaegis.progtech.logic.ResizeableElement;
+import com.alexaegis.progtech.logic.Updatable;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;

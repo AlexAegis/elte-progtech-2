@@ -1,11 +1,12 @@
 package com.alexaegis.progtech.window;
 
-import com.alexaegis.progtech.database.Cache;
 import com.alexaegis.progtech.database.MovieInserter;
-import com.alexaegis.progtech.database.PersonTypes;
+import com.alexaegis.progtech.misc.PersonException;
+import com.alexaegis.progtech.models.people.PersonFactory;
+import com.alexaegis.progtech.models.people.PersonTypes;
 import com.alexaegis.progtech.misc.IllegalMovieException;
 import com.alexaegis.progtech.models.Movie;
-import com.alexaegis.progtech.models.Person;
+import com.alexaegis.progtech.models.people.Person;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -119,13 +120,19 @@ public class NewMovieWindow extends JDialog {
                 directors.stream()
                         .map(String::trim)
                         .filter(s -> s.split(" ").length == 2)
-                        .map(s -> new Person(0, s, null, PersonTypes.DIRECTOR))
-                        .forEach(movie::addDirector);
+                        .map(s -> {
+                            try { return PersonFactory.createDirector(0, s, new java.util.Date());
+                            } catch (PersonException e1) { return null; }
+                        })
+                        .forEach(movie::addPerson);
                 actors.stream()
                         .map(String::trim)
                         .filter(s -> s.split(" ").length == 2)
-                        .map(s -> new Person(0, s, null, PersonTypes.ACTOR))
-                        .forEach(movie::addActor);
+                        .map(s -> {
+                            try { return PersonFactory.createActor(0, s, new java.util.Date());
+                            } catch (PersonException e1) { return null; }
+                        })
+                        .forEach(movie::addPerson);
                 System.out.println(movie);
                 movieInserter.evaluateNewMovie(movie);
                 connector.refresh();

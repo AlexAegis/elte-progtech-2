@@ -1,5 +1,8 @@
 package com.alexaegis.progtech.models;
 
+import com.alexaegis.progtech.models.people.Person;
+import com.alexaegis.progtech.models.people.PersonTypes;
+
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
@@ -21,13 +24,10 @@ public class Movie {
         this.title = title;
         this.release = release;
     }
-    //addPerson
-    public void addDirector(Person director) {
-        directors.add(director);
-    }
 
-    public void addActor(Person actor) {
-        actors.add(actor);
+    public void addPerson(Person person) {
+        if(person.getType().equals(PersonTypes.ACTOR)) actors.add(person);
+        else if(person.getType().equals(PersonTypes.DIRECTOR)) directors.add(person);
     }
 
     public Vector<Object> getData() {
@@ -51,6 +51,34 @@ public class Movie {
                 ", owner='" + owner + '\'' +
                 ", legal=" + legal +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Movie movie = (Movie) o;
+
+        if (id != movie.id) return false;
+        if (legal != movie.legal) return false;
+        if (title != null ? !title.equals(movie.title) : movie.title != null) return false;
+        if (release != null ? !release.equals(movie.release) : movie.release != null) return false;
+        if (directors != null ? !directors.equals(movie.directors) : movie.directors != null) return false;
+        if (actors != null ? !actors.equals(movie.actors) : movie.actors != null) return false;
+        return owner != null ? owner.equals(movie.owner) : movie.owner == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (release != null ? release.hashCode() : 0);
+        result = 31 * result + (directors != null ? directors.hashCode() : 0);
+        result = 31 * result + (actors != null ? actors.hashCode() : 0);
+        result = 31 * result + (owner != null ? owner.hashCode() : 0);
+        result = 31 * result + (legal ? 1 : 0);
+        return result;
     }
 
     public String getTitle() {

@@ -2,7 +2,7 @@ package com.alexaegis.progtech.window.panels;
 
 
 import com.alexaegis.progtech.database.Connector;
-import com.github.alexaegis.swing.ResizeableElement;
+import com.alexaegis.progtech.logic.ResizeableElement;
 
 import javax.swing.*;
 
