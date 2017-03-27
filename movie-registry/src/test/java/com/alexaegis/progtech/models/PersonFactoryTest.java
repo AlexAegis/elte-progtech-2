@@ -1,11 +1,13 @@
 package com.alexaegis.progtech.models;
 
 import com.alexaegis.progtech.misc.InvalidBirthDateException;
+import com.alexaegis.progtech.misc.PersonException;
 import com.alexaegis.progtech.models.people.Name;
 import com.alexaegis.progtech.models.people.NameBuilder;
 import com.alexaegis.progtech.models.people.PersonFactory;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,7 +20,7 @@ public class PersonFactoryTest {
     private Name invalidName;
     private Date invalidBirthDate;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         Calendar calendar = new GregorianCalendar();
         calendar.set(2000,Calendar.AUGUST,10);
@@ -32,9 +34,12 @@ public class PersonFactoryTest {
     public void actorCreateTest() throws Exception {
         PersonFactory.createActor(0, validName, validBirthDate);
     }
-
+/*
     @Test(expected = InvalidBirthDateException.class)
     public void createFromFutureTest() throws Exception {
         PersonFactory.createActor(0, validName, invalidBirthDate);
-    }
+
+        Throwable throwable = Assertions.assertThrows(PersonException.class, () -> new PersonException(""));
+        Assertions.assertEquals();
+    }*/
 }

@@ -1,4 +1,11 @@
-## Programming Technologies 2 - Submission Number 4
+﻿## Programming Technologies 2 - Submission Number 4
+
+### Notes:
+
+http://junit.org/junit5/docs/current/user-guide/
+
+MockitoExtension
+
 
 ### Filmek Nyilvántartása
 Készítsünk programot, amellyel otthoni adathordozón lévő filmjeinket tudjuk nyilván tartani az
