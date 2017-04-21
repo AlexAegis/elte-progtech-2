@@ -45,6 +45,14 @@ public final class PersonFactory {
         return director;
     }
 
+    public static Person createDirector(long id, String name) throws PersonException {
+        return createDirector(id, name, new Date());
+    }
+
+    public static Person createActor(long id, String name) throws PersonException {
+        return createActor(id, name, new Date());
+    }
+
     public static Person createDirector(long id, String name, Date birth) throws PersonException {
         Name nameObj = new NameBuilder(name).getName();
         return createDirector(id, nameObj, birth);

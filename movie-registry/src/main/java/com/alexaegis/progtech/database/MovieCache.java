@@ -1,10 +1,9 @@
 package com.alexaegis.progtech.database;
 
 import com.alexaegis.progtech.misc.PersonException;
-import com.alexaegis.progtech.models.Movie;
+import com.alexaegis.progtech.models.movies.Movie;
 import com.alexaegis.progtech.models.people.Person;
 import com.alexaegis.progtech.models.people.PersonFactory;
-import com.alexaegis.progtech.models.people.PersonTypes;
 
 import java.sql.Date;
 import java.util.Vector;
@@ -12,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class MovieCache extends Cache {
 
-    private Vector<Movie> movies;
+    private Vector<Movie> movies = new Vector<>();
     private Vector<String> columnNames = new Vector<>();
 
     public MovieCache(Connector connector) {
@@ -37,39 +36,34 @@ public class MovieCache extends Cache {
 
     @Override
     public void update() {
-        setQuery("SELECT * FROM movies");
+        setQuery("SELECT * FROM MOVIES");
         super.update();
         Vector<Movie> movies = new Vector<>();
         for(int i = 0; i < super.getData().size(); i++) {
             try {
-                Movie movie = new Movie((int) super.getData().get(i).get(0),
+                Movie movie = new Movie((long) super.getData().get(i).get(0),
                         (String) super.getData().get(i).get(1),
                         (Date) super.getData().get(i).get(2));
-
-                setQuery("SELECT directors.id, directors.Name, directors.Birth FROM directors\n" +
-                        "JOIN movies_directors ON movies_directors.director_id = directors.id\n" +
-                        "WHERE movies_directors.movie_id = " + (i + 1));
+                setQuery("SELECT PEOPLE.ID, PEOPLE.NAME FROM PEOPLE\n" +
+                "JOIN MOVIES_PEOPLE ON MOVIES_PEOPLE.PERSON_ID = PEOPLE.ID\n" +
+                "WHERE MOVIES_PEOPLE.MOVIE_ID = " + (i + 1) + " AND PEOPLE.TYPE = 'director'");
                 super.update();
                 Vector<Person> directors = new Vector<>();
                 for(int j = 0; j < super.getData().size(); j++) {
                     directors.add(PersonFactory.createDirector(
-                            (int) super.getData().get(j).get(0),
-                            (String) super.getData().get(j).get(1),
-                            (Date) super.getData().get(j).get(2)));
+                            (long) super.getData().get(j).get(0),
+                            (String) super.getData().get(j).get(1)));
                 }
                 directors.forEach(movie::addPerson);
-
-                setQuery("SELECT actors.id, actors.Name, actors.Birth FROM actors\n" +
-                        "JOIN movies_actors ON movies_actors.actor_id = actors.id\n" +
-                        "WHERE movies_actors.movie_id = " + (i + 1));
+                setQuery("SELECT PEOPLE.ID, PEOPLE.NAME FROM PEOPLE\n" +
+                        "JOIN MOVIES_PEOPLE ON MOVIES_PEOPLE.PERSON_ID = PEOPLE.ID\n" +
+                        "WHERE MOVIES_PEOPLE.MOVIE_ID = " + (i + 1) + " AND PEOPLE.TYPE = 'actor'");
                 super.update();
                 Vector<Person> actors = new Vector<>();
                 for(int j = 0; j < super.getData().size(); j++) {
-                    Date date = (Date) super.getData().get(j).get(2);
                     actors.add(PersonFactory.createActor(
-                            (int) super.getData().get(j).get(0),
-                            (String) super.getData().get(j).get(1),
-                            (Date) super.getData().get(j).get(2)));
+                            (long) super.getData().get(j).get(0),
+                            (String) super.getData().get(j).get(1)));
                 }
                 actors.forEach(movie::addPerson);
                 movies.add(movie);

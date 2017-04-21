@@ -330,7 +330,7 @@ public class ConnectionWindow extends JFrame {
                 sshProperties.setProperty("password", sshPasswordField.getPassword());
                 sshProperties.setProperty("usessh", Boolean.toString(sshEnabled));
                 connector.disconnect();
-                new Thread(() -> connector.connect(Boolean.parseBoolean(sshProperties.getProperty("usessh")))).start();
+                new Thread(() -> connector.connect()).start();
                 dispose();
             }
         });

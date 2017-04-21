@@ -40,16 +40,19 @@ public final class Main {
     @Parameter(names = {"--sshpassword", "-ssnpw"})                             private String sshpasswordtemp;
                                                                                 private char[] sshpassword;
     @Parameter(names = {"--usessh", "-us"})                                     private String usessh;
+    @Parameter(names = {"--uselocaldb", "-l"})                                  private String uselocaldb;
 
     public static void main(String[] args) throws SQLException {
-        //String[] clipboard = readFromClipBoard().split(" ");
-        //if(Arrays.stream(clipboard).noneMatch(String::isEmpty)) args = clipboard;
         Main main = new Main();
         new JCommander(main, args);
         main.updateProperties();
-        connector = new Connector();
+        if(Boolean.parseBoolean(dbProperties.getProperty("uselocaldb"))) {
+            connector = new Connector("jdbc:derby:src/main/resources/database/localdb;create=true", "", "");
+        } else {
+            connector = new Connector();
+        }
         if(Boolean.parseBoolean(dbProperties.getProperty("connectbydefault")))
-            new Thread(() -> connector.connect(Boolean.parseBoolean(sshProperties.getProperty("usessh")))).start();
+            new Thread(() -> connector.connect()).start();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             EventQueue.invokeLater(() -> new MainWindow(connector));
@@ -90,10 +93,9 @@ public final class Main {
                 sshpasswordtemp = null;
             }
             if(usessh != null)              sshProperties.setProperty("usessh", usessh);
+            if(uselocaldb != null)          dbProperties.setProperty("uselocaldb", uselocaldb);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }

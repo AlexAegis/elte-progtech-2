@@ -3,10 +3,8 @@ package com.alexaegis.progtech.window;
 import com.alexaegis.progtech.database.MovieInserter;
 import com.alexaegis.progtech.misc.PersonException;
 import com.alexaegis.progtech.models.people.PersonFactory;
-import com.alexaegis.progtech.models.people.PersonTypes;
 import com.alexaegis.progtech.misc.IllegalMovieException;
-import com.alexaegis.progtech.models.Movie;
-import com.alexaegis.progtech.models.people.Person;
+import com.alexaegis.progtech.models.movies.Movie;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

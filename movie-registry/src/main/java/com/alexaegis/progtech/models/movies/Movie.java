@@ -1,4 +1,4 @@
-package com.alexaegis.progtech.models;
+package com.alexaegis.progtech.models.movies;
 
 import com.alexaegis.progtech.models.people.Person;
 import com.alexaegis.progtech.models.people.PersonTypes;
@@ -26,8 +26,8 @@ public class Movie {
     }
 
     public void addPerson(Person person) {
-        if(person.getType().equals(PersonTypes.ACTOR)) actors.add(person);
-        else if(person.getType().equals(PersonTypes.DIRECTOR)) directors.add(person);
+        if(person.getType().equals(PersonTypes.DIRECTOR)) directors.add(person);
+        else actors.add(person);
     }
 
     public Vector<Object> getData() {
@@ -38,19 +38,6 @@ public class Movie {
         data.add(directors);
         data.add(actors);
         return data;
-    }
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", release=" + release +
-                ", directors=" + directors +
-                ", actors=" + actors +
-                ", owner='" + owner + '\'' +
-                ", legal=" + legal +
-                '}';
     }
 
     @Override
@@ -67,6 +54,34 @@ public class Movie {
         if (directors != null ? !directors.equals(movie.directors) : movie.directors != null) return false;
         if (actors != null ? !actors.equals(movie.actors) : movie.actors != null) return false;
         return owner != null ? owner.equals(movie.owner) : movie.owner == null;
+    }
+
+    public List<Person> getDirectors() {
+        return directors;
+    }
+
+    public List<Person> getActors() {
+        return actors;
+    }
+
+    public List<Person>getPeople() {
+        List<Person> result = new ArrayList<>();
+        result.addAll(directors);
+        result.addAll(actors);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", release=" + release +
+                ", directors=" + directors +
+                ", actors=" + actors +
+                ", owner='" + owner + '\'' +
+                ", legal=" + legal +
+                '}';
     }
 
     @Override
@@ -91,13 +106,5 @@ public class Movie {
 
     public Date getRelease() {
         return release;
-    }
-
-    public List<Person> getActors() {
-        return actors;
-    }
-
-    public List<Person> getDirectors() {
-        return directors;
     }
 }

@@ -1,7 +1,7 @@
 package com.alexaegis.progtech.database;
 
 import com.alexaegis.progtech.misc.IllegalMovieException;
-import com.alexaegis.progtech.models.Movie;
+import com.alexaegis.progtech.models.movies.Movie;
 import com.alexaegis.progtech.models.people.Person;
 import com.alexaegis.progtech.models.people.PersonTypes;
 
@@ -65,10 +65,7 @@ public class MovieInserter {
                 }
             }
         }
-        for (Person person : movie.getActors()) {
-            evaluateNewPerson(person, movieId);
-        }
-        for (Person person : movie.getDirectors()) {
+        for (Person person : movie.getPeople()) {
             evaluateNewPerson(person, movieId);
         }
         queries.add("INSERT INTO movies VALUES (" + movieId + ", \"" + movie.getTitle() + "\", \"" + movie.getRelease() + "\")");

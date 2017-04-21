@@ -49,9 +49,9 @@ public final class Connector extends Thread implements Runnable {
         dbProperties.setPropertyObject("password", dbPassword.toCharArray());
     }
 
-    public void connect(boolean usessh) {
+    public void connect() {
         try {
-            if(usessh) {
+            if(Boolean.parseBoolean(sshProperties.getProperty("usessh"))) {
                 session = sch.getSession(sshUsername, sshHost, sshPort);
                 session.setPassword(String.copyValueOf((char[]) sshProperties.getPropertyObject("password")));
                 sshProperties.destroyPasswordProperty("password");
