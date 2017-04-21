@@ -1,12 +1,9 @@
 package com.alexaegis.progtech.database;
 
 import com.alexaegis.progtech.Main;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.sql.PreparedStatement;
-import java.sql.Statement;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static java.lang.Thread.sleep;
 
@@ -14,7 +11,7 @@ public class MovieInserterTest {
 
     Connector connector;
 
-    @Before
+    @BeforeEach
     public void beforeTests() throws Exception {
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
         new Main().updateProperties();
@@ -30,7 +27,7 @@ public class MovieInserterTest {
     }
 
     @Test
-    public void mainTest() throws Exception {
+    public void mainTest() throws Exception {/*
         System.out.println("AD");
         Statement statement = connector.getConnection().createStatement();
 
@@ -44,10 +41,10 @@ public class MovieInserterTest {
                 ");");
         stt.executeUpdate();
         statement.execute("commit;");
-        statement.close();
+        statement.close();*/
     }
 
-    @After
+    @AfterEach
     public void afterTests() {
         connector.disconnect();
     }

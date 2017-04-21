@@ -1,12 +1,12 @@
 ----------------------------------------------------------------
-Sat Mar 04 19:07:31 CET 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015a-9a81-544e-0000069ce668 
-on database directory D:\Git\elte-progtech-2\movie-registry\src\main\resources\database\moviedata with class loader sun.misc.Launcher$AppClassLoader@4e25154f 
+Fri Apr 21 13:03:50 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015b-902e-b093-000005dd16e8 
+on database directory D:\Git\elte-progtech-2\movie-registry\src\main\resources\database\localdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/alexa/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_121-b13
 user.dir=D:\Git\elte-progtech-2\movie-registry
-os.title=Windows 10
+os.name=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=null

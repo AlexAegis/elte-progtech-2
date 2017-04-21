@@ -1,15 +1,17 @@
 package com.alexaegis.progtech;
 
 import com.alexaegis.progtech.logic.SecureProperties;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 
 public class MainTest {
+
     SecureProperties properties = new SecureProperties();
-    @Before
+
+    @BeforeEach
     public void beforeTests() {
 
     }
@@ -19,7 +21,7 @@ public class MainTest {
         System.out.println(Date.valueOf("2017-01-01"));
     }
 
-    @After
+    @AfterEach
     public void afterTests() {
 
     }
