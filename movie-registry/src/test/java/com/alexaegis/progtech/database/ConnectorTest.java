@@ -28,14 +28,14 @@ public class ConnectorTest {
     public static void setUp() throws Exception {
         connection = DriverManager.getConnection(JDBCURL);
         properties.load(ConnectorTest.class.getClassLoader().getResourceAsStream("database.properties"));
-        dropTables();
     }
 
     @Test
     public void createAllSchemesTest() throws Exception {
+        dropTables();
         try(Stream<Path> pathStream = Files.walk(Paths.get("src/main/resources/database/schemas"))) {
             pathStream.forEach(path -> {
-                if (Files.isRegularFile(path)) { // TODO maybe you can take out
+                if (Files.isRegularFile(path)) {
                     try {
                         String content = new Scanner(path).useDelimiter("\\Z").next();
                         //logger.info("File found: " + path.toString() + "\nFile content: \n" + content);
@@ -50,7 +50,20 @@ public class ConnectorTest {
 
     @Test
     public void fillAllSchemesTest() throws Exception {
-
+        try(Stream<Path> pathStream = Files.walk(Paths.get("src/main/resources/database/data"))) {
+            pathStream.forEach(path -> {
+                if (Files.isRegularFile(path)) {
+                    System.out.println(path.toString());
+                    try (Scanner scanner = new Scanner(path)) {
+                        while (scanner.hasNextLine()) {
+                            connection.createStatement().execute(scanner.nextLine().replace(';', ' '));
+                        }
+                    } catch (IOException | SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
     }
 
     private static void dropTables() throws SQLException {
