@@ -56,7 +56,7 @@ public class DataGrid extends JTable implements Updatable, ResizeableElement {
 
             }
         };
-        ButtonColumn buttonColumn = new ButtonColumn(this, delete, 5);
+        ButtonColumn buttonColumn = new ButtonColumn(this, delete, 6);
         buttonColumn.setMnemonic(KeyEvent.VK_D);
 
         TableRowSorter<TableModel> sorter = new TableRowSorter<>(getModel());
@@ -92,7 +92,7 @@ public class DataGrid extends JTable implements Updatable, ResizeableElement {
 
     @Override
     public boolean isCellEditable(int row, int column) {
-        if(column == 5) return true;
+        if(column == 6) return true;
         else return false;
     }
 }

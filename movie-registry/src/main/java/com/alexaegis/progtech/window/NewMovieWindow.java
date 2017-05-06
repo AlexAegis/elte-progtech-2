@@ -98,6 +98,26 @@ public class NewMovieWindow extends JDialog {
         gbc_actorsField.gridy = 3;
         contentPanel.add(actorsField, gbc_actorsField);
 
+
+
+        JLabel originalityLabel = new JLabel("Original:");
+        GridBagConstraints gbc_originalityLabel = new GridBagConstraints();
+        gbc_originalityLabel.anchor = GridBagConstraints.EAST;
+        gbc_originalityLabel.insets = new Insets(0, 0, 0, 5);
+        gbc_originalityLabel.gridx = 0;
+        gbc_originalityLabel.gridy = 4;
+        contentPanel.add(originalityLabel, gbc_originalityLabel);
+
+        JCheckBox originalityBox = new JCheckBox();
+        actorsField.setToolTipText("Use semicolons to separate multiple actors");
+        GridBagConstraints gbc_originalityBox = new GridBagConstraints();
+        gbc_originalityBox.insets = new Insets(0, 0, 0, 5);
+        gbc_originalityBox.fill = GridBagConstraints.HORIZONTAL;
+        gbc_originalityBox.gridx = 1;
+        gbc_originalityBox.gridy = 4;
+        contentPanel.add(originalityBox, gbc_originalityBox);
+
+
         directorsField.setText("Christopher Nolan"); //TODO TAKE ME OUT
         actorsField.setText("Christian Bale; Michael Caine; Gary Oldman"); //TODO TAKE ME OUT
         titleField.setText("The Dark Knight Rises"); //TODO TAKE ME OUT
@@ -112,7 +132,7 @@ public class NewMovieWindow extends JDialog {
         okButton.addActionListener(e -> {
             try {
                 MovieHandler movieHandler = new MovieHandler(connector);
-                Movie movie = new Movie(0, titleField.getText().trim(), Date.valueOf(releaseField.getText()), false); // TODO legality option ticker
+                Movie movie = new Movie(0, titleField.getText().trim(), Date.valueOf(releaseField.getText()), originalityBox.isSelected()); // TODO legality option ticker
                 java.util.List<String> directors = Arrays.asList(directorsField.getText().split(";"));
                 java.util.List<String> actors = Arrays.asList(actorsField.getText().split(";"));
                 directors.stream()

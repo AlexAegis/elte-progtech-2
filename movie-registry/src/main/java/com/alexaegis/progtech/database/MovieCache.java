@@ -33,6 +33,7 @@ public class MovieCache extends Cache {
         columnNames.add("Year");
         columnNames.add("Directors");
         columnNames.add("Actors");
+        columnNames.add("Originality");
         this.update();
     }
 
@@ -72,9 +73,11 @@ public class MovieCache extends Cache {
         int movieCount = super.getData().size();
         for(int i = 0; i < movieCount; i++) {
             try {
+                System.out.println((int) super.getData().get(i).get(3));
                 Movie movie = new Movie((long) super.getData().get(i).get(0),
                         (String) super.getData().get(i).get(1),
-                        (Date) super.getData().get(i).get(2), false);
+                        (Date) super.getData().get(i).get(2),
+                        ((int) super.getData().get(i).get(3)) == 1);
                 peopleTable.setQuery("SELECT PEOPLE.ID, PEOPLE.NAME, PEOPLE.TYPE FROM PEOPLE\n" +
                 "JOIN MOVIES_PEOPLE ON MOVIES_PEOPLE.PERSON_ID = PEOPLE.ID\n" +
                 "WHERE MOVIES_PEOPLE.MOVIE_ID = " + super.getData().get(i).get(0));

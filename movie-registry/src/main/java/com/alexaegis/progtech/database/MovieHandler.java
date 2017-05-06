@@ -169,4 +169,17 @@ public class MovieHandler implements Updatable {
     public void update() {
         movieCache.update();
     }
+
+    public void panic() {
+        for (Movie movie : movieCache.getMovies()) {
+            if(!movie.getLegality()) {
+                try {
+                    removeMovie(movie);
+                } catch (IllegalMovieException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        update();
+    }
 }

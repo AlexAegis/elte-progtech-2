@@ -1,10 +1,13 @@
 package com.alexaegis.progtech.window.panels;
 
 import com.alexaegis.progtech.Main;
+import com.alexaegis.progtech.database.MovieHandler;
 import com.alexaegis.progtech.window.ConnectionWindow;
 import com.alexaegis.progtech.window.NewMovieWindow;
 
 import javax.swing.*;
+
+import static com.alexaegis.progtech.Main.connector;
 
 public class MenuBar extends JMenuBar {
 
@@ -70,13 +73,19 @@ public class MenuBar extends JMenuBar {
         leasesMenu.add(miListLeases);
         leasesMenu.add(miNewLease);
 
-        JMenu panicMenu = new JMenu("Panic");
+        JButton panicButton = new JButton("Panic");
+
+        panicButton.addActionListener(e -> {
+            MovieHandler movieHandler = new MovieHandler(connector);
+            movieHandler.panic();
+            Main.connector.refresh();
+        });
 
         add(fileMenu);
         add(databaseMenu);
         add(movieMenu);
         add(leasesMenu);
-        add(panicMenu);
+        add(panicButton);
 
         revalidate();
         repaint();

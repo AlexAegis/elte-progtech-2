@@ -39,6 +39,7 @@ public class Movie {
         data.add(release);
         data.add(directors);
         data.add(actors);
+        data.add(legal);
         return data;
     }
 
