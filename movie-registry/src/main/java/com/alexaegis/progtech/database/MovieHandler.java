@@ -38,7 +38,7 @@ public class MovieHandler implements Updatable {
             throw new IllegalMovieException("Movie can't be deleted, it does not exists");
         }
         try (PreparedStatement statement = movieCache.getConnector().getConnection()
-                .prepareStatement("DELETE FROM APP.MOVIES WHERE TITLE = " + movie.getTitle())) {
+                .prepareStatement("DELETE FROM APP.MOVIES WHERE ID = " + movie.getId())) {
             int affectedRows = statement.executeUpdate();
 
         } catch (SQLException e) {
