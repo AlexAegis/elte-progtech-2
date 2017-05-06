@@ -13,12 +13,16 @@ import static java.lang.Thread.sleep;
 
 public class ContentPane extends JLayeredPane implements ResizeableElement {
 
+    private ScrollPane scrollPane;
+
     public ContentPane(Connector connector) {
         setSize(Integer.parseInt(displayProperties.getProperty("main.width")), Integer.parseInt(displayProperties.getProperty("main.height")));
         new Thread(() -> {
+
             try {
                 while(!connector.isConnected()) sleep(250);
-                add(new ScrollPane(connector));
+                scrollPane = new ScrollPane(connector);
+                add(scrollPane);
             } catch (InterruptedException | SQLException e) {
                 e.printStackTrace();
             }
@@ -28,6 +32,10 @@ public class ContentPane extends JLayeredPane implements ResizeableElement {
         setVisible(true);
         revalidate();
         repaint();
+    }
+
+    public ScrollPane getScrollPane() {
+        return scrollPane;
     }
 
     @Override

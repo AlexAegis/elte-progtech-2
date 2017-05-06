@@ -8,6 +8,7 @@ import com.alexaegis.progtech.window.NewMovieWindow;
 import javax.swing.*;
 
 import static com.alexaegis.progtech.Main.connector;
+import static com.alexaegis.progtech.window.MainWindow.windowContent;
 
 public class MenuBar extends JMenuBar {
 
@@ -60,18 +61,19 @@ public class MenuBar extends JMenuBar {
         JMenu movieMenu = new JMenu("Movies");
         JMenuItem miAddMovie = new JMenuItem("Add Movie", iconShop);
         JMenuItem miShowMovies = new JMenuItem("Show Movies", iconShop);
-        JMenuItem miShowLends = new JMenuItem("Show Lends", iconShop);
+
+        miShowMovies.addActionListener(e -> windowContent.getScrollPane().setMovieGrid());
+
         miAddMovie.addActionListener(e -> new NewMovieWindow());
         movieMenu.add(miAddMovie);
         movieMenu.addSeparator();
         movieMenu.add(miShowMovies);
-        movieMenu.add(miShowLends);
 
         JMenu leasesMenu = new JMenu("Leases");
         JMenuItem miListLeases = new JMenuItem("List Leases", iconShop);
-        JMenuItem miNewLease = new JMenuItem("New Lease", iconShop);
         leasesMenu.add(miListLeases);
-        leasesMenu.add(miNewLease);
+
+        miListLeases.addActionListener(e -> windowContent.getScrollPane().setLeaseGrid());
 
         JButton panicButton = new JButton("Panic");
 

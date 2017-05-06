@@ -1,16 +1,15 @@
 package com.alexaegis.progtech.database;
 
 import com.alexaegis.progtech.logic.Updatable;
+import com.alexaegis.progtech.misc.IllegalLeaseException;
 import com.alexaegis.progtech.misc.IllegalMovieException;
 import com.alexaegis.progtech.misc.IllegalPersonException;
 import com.alexaegis.progtech.misc.IllegalRelationException;
 import com.alexaegis.progtech.models.movies.Movie;
 import com.alexaegis.progtech.models.people.Person;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.swing.*;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +17,15 @@ import java.util.Map;
 public class MovieHandler implements Updatable {
 
     private MovieCache movieCache;
+    private Cache leaseCache;
 
     List<String> queries;
 
     public MovieHandler(Connector connector) {
         movieCache = new MovieCache(connector);
+        leaseCache = new Cache(connector);
+        leaseCache.setQuery("SELECT * FROM APP.LEASES");
+        leaseCache.update();
         queries = new ArrayList<>();
         update();
     }
@@ -181,5 +184,41 @@ public class MovieHandler implements Updatable {
             }
         }
         update();
+    }
+
+    public void evaluateNewLease(Movie movie, String leaser, java.sql.Date date) throws IllegalLeaseException {
+        if (leaseCache.getColumn(1).contains(movie.getId())) {
+            JOptionPane.showMessageDialog(null, "This movie is already leased!");
+            throw new IllegalLeaseException("Movie already leased!");
+        }
+        try (PreparedStatement statement = movieCache.getConnector().getConnection().prepareStatement("INSERT INTO APP.LEASES(MOVIE_ID, NAME, DATE) VALUES (?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS)) {
+            statement.setLong(1, movie.getId());
+            statement.setString(2, leaser);
+            statement.setDate(3, date);
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new IllegalLeaseException("Creating lease failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            update();
+        }
+    }
+
+    public void removeLease(long movieId) throws IllegalLeaseException {
+        try (PreparedStatement statement = movieCache.getConnector().getConnection().prepareStatement("DELETE FROM APP.LEASES WHERE MOVIE_ID = " + movieId)) {
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new IllegalLeaseException("Deleting lease failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            update();
+        }
     }
 }
