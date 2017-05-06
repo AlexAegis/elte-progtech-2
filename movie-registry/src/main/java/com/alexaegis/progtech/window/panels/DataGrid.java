@@ -1,6 +1,5 @@
 package com.alexaegis.progtech.window.panels;
 
-import com.alexaegis.progtech.database.Cache;
 import com.alexaegis.progtech.database.Connector;
 import com.alexaegis.progtech.database.MovieCache;
 import com.alexaegis.progtech.logic.ResizeableElement;

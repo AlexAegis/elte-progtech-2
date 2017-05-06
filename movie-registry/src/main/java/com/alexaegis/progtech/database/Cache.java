@@ -1,6 +1,5 @@
 package com.alexaegis.progtech.database;
 
-
 import com.alexaegis.progtech.logic.Updatable;
 
 import java.sql.*;
@@ -64,5 +63,10 @@ public class Cache implements Updatable {
         return data.stream()
                 .map(row -> row.stream().map(Object::toString).collect(Collectors.joining(", ")))
                 .collect(Collectors.joining("\n")) + "rowCount: " + data.size() + "columnCount: " + getColumnNames().size();
+    }
+
+    public Connector getConnector() {
+        return connector
+                ;
     }
 }

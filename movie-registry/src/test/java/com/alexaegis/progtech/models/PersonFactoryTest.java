@@ -1,11 +1,8 @@
 package com.alexaegis.progtech.models;
 
-import com.alexaegis.progtech.misc.InvalidBirthDateException;
-import com.alexaegis.progtech.misc.PersonException;
 import com.alexaegis.progtech.models.people.Name;
 import com.alexaegis.progtech.models.people.NameBuilder;
 import com.alexaegis.progtech.models.people.PersonFactory;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,11 +32,11 @@ public class PersonFactoryTest {
         PersonFactory.createActor(0, validName, validBirthDate);
     }
 /*
-    @Test(expected = InvalidBirthDateException.class)
+    @Test(expected = InvalidBirthDateExceptionIllegal.class)
     public void createFromFutureTest() throws Exception {
         PersonFactory.createActor(0, validName, invalidBirthDate);
 
-        Throwable throwable = Assertions.assertThrows(PersonException.class, () -> new PersonException(""));
+        Throwable throwable = Assertions.assertThrows(IllegalPersonException.class, () -> new IllegalPersonException(""));
         Assertions.assertEquals();
     }*/
 }

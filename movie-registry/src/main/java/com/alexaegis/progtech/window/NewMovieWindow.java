@@ -1,7 +1,7 @@
 package com.alexaegis.progtech.window;
 
-import com.alexaegis.progtech.database.MovieInserter;
-import com.alexaegis.progtech.misc.PersonException;
+import com.alexaegis.progtech.database.MovieHandler;
+import com.alexaegis.progtech.misc.IllegalPersonException;
 import com.alexaegis.progtech.models.people.PersonFactory;
 import com.alexaegis.progtech.misc.IllegalMovieException;
 import com.alexaegis.progtech.models.movies.Movie;
@@ -111,8 +111,8 @@ public class NewMovieWindow extends JDialog {
         okButton.setActionCommand("OK");
         okButton.addActionListener(e -> {
             try {
-                MovieInserter movieInserter = new MovieInserter(connector);
-                Movie movie = new Movie(0, titleField.getText().trim(), Date.valueOf(releaseField.getText()));
+                MovieHandler movieHandler = new MovieHandler(connector);
+                Movie movie = new Movie(0, titleField.getText().trim(), Date.valueOf(releaseField.getText()), false); // TODO legality option ticker
                 java.util.List<String> directors = Arrays.asList(directorsField.getText().split(";"));
                 java.util.List<String> actors = Arrays.asList(actorsField.getText().split(";"));
                 directors.stream()
@@ -120,7 +120,7 @@ public class NewMovieWindow extends JDialog {
                         .filter(s -> s.split(" ").length == 2)
                         .map(s -> {
                             try { return PersonFactory.createDirector(0, s, new java.util.Date());
-                            } catch (PersonException e1) { return null; }
+                            } catch (IllegalPersonException e1) { return null; }
                         })
                         .forEach(movie::addPerson);
                 actors.stream()
@@ -128,11 +128,11 @@ public class NewMovieWindow extends JDialog {
                         .filter(s -> s.split(" ").length == 2)
                         .map(s -> {
                             try { return PersonFactory.createActor(0, s, new java.util.Date());
-                            } catch (PersonException e1) { return null; }
+                            } catch (IllegalPersonException e1) { return null; }
                         })
                         .forEach(movie::addPerson);
                 System.out.println(movie);
-                movieInserter.evaluateNewMovie(movie);
+                movieHandler.evaluateNewMovie(movie);
                 connector.refresh();
                 dispose();
             } catch (IllegalArgumentException e1) {

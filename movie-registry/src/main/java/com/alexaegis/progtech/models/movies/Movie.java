@@ -19,13 +19,15 @@ public class Movie {
     private String owner;
     private boolean legal;
 
-    public Movie(long id, String title, Date release) {
+    public Movie(long id, String title, Date release, boolean legal) {
         this.id = id;
         this.title = title;
         this.release = release;
+        this.legal = legal;
     }
 
     public void addPerson(Person person) {
+        System.out.println(person);
         if(person.getType().equals(PersonTypes.DIRECTOR)) directors.add(person);
         else actors.add(person);
     }
@@ -106,5 +108,13 @@ public class Movie {
 
     public Date getRelease() {
         return release;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public boolean getLegality() {
+        return legal;
     }
 }
