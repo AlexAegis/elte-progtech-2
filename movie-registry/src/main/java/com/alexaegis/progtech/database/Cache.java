@@ -66,7 +66,6 @@ public class Cache implements Updatable {
     }
 
     public Connector getConnector() {
-        return connector
-                ;
+        return connector;
     }
 }

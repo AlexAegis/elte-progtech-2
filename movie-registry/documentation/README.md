@@ -684,66 +684,66 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 <h2>5. Nem funkcionális követelmények</h2>
 
-	1. Termék követelmények
+1. Termék követelmények
 
-		- A program Java 8 segítségével fog készülni így futtatásához mindenképpen szükség lesz a 
-		legfrissebb [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)-re.
-		- A program .jar csomagként kerül majd terjesztésre, helyi adatbázis esetén nem, távoli adatbázis esetén
-		szükség lesz aktív internetkapcsolatra. 
-		
-		- A program futtatásához legfeljebb kiszabható követelmények:
-				- Windows vagy egyéb, java alkalmazások futtatására alkalmas operációs rendszer
-				- Telepített Java Runtime Environment
-				- mySQL adatbázis (Lehetséges, hogy később egy hordozhatóbb megoldással is előállunk)
-				- 1376 x 768 felbontás
-				- 512 MB RAM
-		
-		- A programnak a futattó környezet lehetőségeihez mérten azonnal el kell indulnia, az alapértelmezett
-		adatbáziskapcsolatot induláskor egyől megkísérli létrehozni de külön szálon, így a felhasználói felület
-		előbb betölthet
-		- Az felhasználói felületnek reszponzívnak kell lennie
-		- A felhasználói felületnek jól tagoltnak kell lenni, a gombok, menüpontok ikonokkal lesznek
-		ellátva
-		- A program összes funkcionalitása elérhető a saját .jar csomagjából. Bármilyen más fájlt akar még 
-		kezelni, azt létre is kell tudni hoznia
-		- A program az futtató környezet alapértelmezett Java Look & Feel-je szerint fog megjelenni
-	 
-	2. Szervezeti követelmények
+    - A program Java 8 segítségével fog készülni így futtatásához mindenképpen szükség lesz a 
+    legfrissebb [JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)-re.
+    - A program .jar csomagként kerül majd terjesztésre, helyi adatbázis esetén nem, távoli adatbázis esetén
+    szükség lesz aktív internetkapcsolatra. 
+    
+    - A program futtatásához legfeljebb kiszabható követelmények:
+            - Windows vagy egyéb, java alkalmazások futtatására alkalmas operációs rendszer
+            - Telepített Java Runtime Environment
+            - mySQL adatbázis (Lehetséges, hogy később egy hordozhatóbb megoldással is előállunk)
+            - 1376 x 768 felbontás
+            - 512 MB RAM
+    
+    - A programnak a futattó környezet lehetőségeihez mérten azonnal el kell indulnia, az alapértelmezett
+    adatbáziskapcsolatot induláskor egyől megkísérli létrehozni de külön szálon, így a felhasználói felület
+    előbb betölthet
+    - Az felhasználói felületnek reszponzívnak kell lennie
+    - A felhasználói felületnek jól tagoltnak kell lenni, a gombok, menüpontok ikonokkal lesznek
+    ellátva
+    - A program összes funkcionalitása elérhető a saját .jar csomagjából. Bármilyen más fájlt akar még 
+    kezelni, azt létre is kell tudni hoznia
+    - A program az futtató környezet alapértelmezett Java Look & Feel-je szerint fog megjelenni
+ 
+2. Szervezeti követelmények
 
-		- A program fejlesztése a JetBrains IntelliJ IDEA fejlesztői környezetben fog zajlani, az adatbázis
-		kezeléséhez pedig a JetBrains DataGrip nevű szoftverét használjuk, hogy a program funkciót
-		megfelelően monitorozni tudjuk.
-		
-		- A fejlesztés a Clean Code alapelveinek megfelelően és TDD szerint fog zajlani.
-		
-		- A fejlesztés az alábbi határidők mentén fog haladni:
-				1. beadandó: Dokumentáció - 2017.02.27
-				2. beadandó: Statikus terv - 2017.03.20.
-				3. beadandó: Részleges prototípus tesztelés - 2017.04.17.
-				4. beadandó: Teljes megvalósítás, teszteléssel - 2017.05.08.
-				
-		- A fejlesztés folyamata Git segítségével lesz vezetve, online folyamatosan megtekinthető 
-		az következő helyen:
-		https://github.com/AlexAegis/elte-progtech-2/blob/master/movie-repository/
-		
-		- A program buildeléséhez, dependenciáinak kezeléséhez Maven-t fogunk használni.
-		Ennek kezeléséről, és a GitHub integrációjárol itt lehet többet megtudni:
-		https://github.com/AlexAegis/maven-repository
-		
-		- A program fejlesztése során a Caesar rendszer által szolgáltatott mySQL adatbázis-t fogjuk használni
-			
-	3. Külső követelmények
+    - A program fejlesztése a JetBrains IntelliJ IDEA fejlesztői környezetben fog zajlani, az adatbázis
+    kezeléséhez pedig a JetBrains DataGrip nevű szoftverét használjuk, hogy a program funkciót
+    megfelelően monitorozni tudjuk.
+    
+    - A fejlesztés a Clean Code alapelveinek megfelelően és TDD szerint fog zajlani.
+    
+    - A fejlesztés az alábbi határidők mentén fog haladni:
+            1. beadandó: Dokumentáció - 2017.02.27
+            2. beadandó: Statikus terv - 2017.03.20.
+            3. beadandó: Részleges prototípus tesztelés - 2017.04.17.
+            4. beadandó: Teljes megvalósítás, teszteléssel - 2017.05.08.
+            
+    - A fejlesztés folyamata Git segítségével lesz vezetve, online folyamatosan megtekinthető 
+    az következő helyen:
+    https://github.com/AlexAegis/elte-progtech-2/blob/master/movie-repository/
+    
+    - A program buildeléséhez, dependenciáinak kezeléséhez Maven-t fogunk használni.
+    Ennek kezeléséről, és a GitHub integrációjárol itt lehet többet megtudni:
+    https://github.com/AlexAegis/maven-repository
+    
+    - A program fejlesztése során a Caesar rendszer által szolgáltatott mySQL adatbázis-t fogjuk használni
+        
+3. Külső követelmények
 
-		- A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
-			dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
-			Maven segítségével fogjuk buildelni.
-		- A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
-			Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
-			dependecia fog szolgáltatni.
-			Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
-			SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
-		- A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
-			keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
+    - A program bizonyos komponensei külső csomagokat használnak segítségül, ezeket a 
+        dependenciákat a Maven Central Repository-ból fogjuk beszerezni, a programot pedig 
+        Maven segítségével fogjuk buildelni.
+    - A programnak egy mySQL adatbázis kell kezelnie, ehhez JDBC kapcsolatot fogunk használni.
+        Driverként meg a com.mysql.cj.jdbc.Driver-t fogjuk használni ami a mysql.mysql-connector-java
+        dependecia fog szolgáltatni.
+        Emellett pedig opcionálisan lehetőséget biztosítunk távoli adatbázis kezelésére is 
+        SSH csatornán keresztül, ehhez a com.jcraft.jsch csomagot fogjuk használni.
+    - A program a benne felhasznált jelszavakat nem tárolhatja, azokat csak is mutable objektumokon
+        keresztül kezelheti és felhasználás után kinullázásra kerülnek, referenciáik megszűnnek
 
 <h2>6. Tervezés</h2>
 
@@ -783,6 +783,34 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 2. Osztálydiagram
 
+Csomagszerkezet
+
+![CD_1](./diagrams/packages.jpg)
+
+Filmek, kölcsönzések kapcsolata
+
+![CD_2](./diagrams/movies.jpg)
+
+Emberek
+
+![CD_3](./diagrams/people.jpg)
+
+Adatbáziskapcsolat és adattároló
+
+![CD_4](./diagrams/database.jpg)
+
+Adatmegjelenítő panelek
+
+![CD_5](./diagrams/datagrid.jpg)
+
+Properties osztály jelszó tároláshoz
+
+![CD_6](./diagrams/props.jpg)
+
+Kivételek
+
+![CD_7](./diagrams/exceptions.jpg)
+
 ![Class Diagram](./classdiagram.png)
 
 3. Felületterv
@@ -791,6 +819,10 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 
 ![main_window_full](./mainwindowfull_prototype.png)
 
+- Kölcsönzések listázása
+
+![main_window_full](./mainwindowfull_leases.png)
+
 - Connection menu
 
 ![main_window](./mainwindow_prototype.png)
@@ -798,4 +830,11 @@ ELTE-IK-s Caesar-os hozzáféréssel így az ott kapott mySQL adatbázist könny
 - Connect window
 
 ![connect_menu](./connectmenu_prototype.png)
- <h5>A felülettervezetből hiányoznak az alső keresőmezők, a filmkölcsönzési nézet hasonlóan néz ki szintén alsó keresőmezőkkel és a szükségeseken kívül egy plusz oszloppal melyben a kölcsönbeadás visszavonásához szükséges gomb lesz elhelyezve. A több elemű mezőkhöz legördülő menü fog tartozni. Az ikonok nem véglegesek és nincs mindenhol.</h5>
+
+4. Működési leírás
+
+A program induláskor egy Connector osztályt példányosít, egy külön szálon elindítja a kapcsolódási folyamatot majd elindítja a kezelőfelületet. Így a kezelőfelület megjelenhet még azelőtt, hogy az adatbáziskapcsolat létrejönne. Ha esetleg a kapcsolódás az alapértelmezett beállításokkal sikertelen lenne, a kezelőfelület biztosít lehetőséget új kapcsolat létrehozására.
+A Connector objektum a kapcsolathoz szükséges adatokat egy a Main osztályban tárolt SecureProperties objektumból kapja ami az adatait egy konfigurációs fájlból nyeri. Ezek az alapértelmezett kapcsolati és megjelenítési adatokat tárolják. A kapcsolati adatok alapértelmezései programargumentumokkal is felüldefiniálhatóak valamint ebbe az objektumba ír a kezelőfelület kapcsolódáshoz tartozó ablakja.
+A Connector connect függvénye majd ezen adatok alapján létrehozza az adatbáziskapcsolatot, közbe az isConnected függvény segítségével nyomonkövethető a kapcsolódás állapota. Ennek segítségével fogja tudna a kezelőfelület, hogy mikor kérheti le az adatokat az adatbázisból.
+A kezelőfelületen az adatok megjelenítése egy ScrollPane-en belül egy saját MovieGrid objektummal történik ami egy JTable-t valósít meg. A fenti menü segítségével cserélhető a ScrollPane-en belüli grid objektum, hogy most éppen a kölcsönzéseket vagy a filmeket mutassa. A MovieGrid objektum tárol egy MovieCache objektumot aminek a fő adatforrása a globális Connector objektum. Ez az objektum dolga a Connector által szolgáltatott Connection segítségével az adatbázisból lehúzni a szükséges adatokat majd azokat megjeleníteni. A filmek kezeléséhez egy MovieHandler nevű ösztályt használunk ami szintén a Connector objektumból dolgozik. Az ő feladata kommunikálni az adatbázissal, új filmeket felvenni illetve törölni, ugyanezt a kölcsönzésekkel. A kezelőfelület megfelelő helyén jönnek létre ezek a kezelő objektumok amik a feladatuk végeztével törlődnek is.
+Minden változtatás után frissül a megjelenítés ami mindig az adatbázis aktuális állapotát mutatja. Az adatbázis kaszkádos törlést használ így ha egy filmet törlünk az adatbázisból az összes hozzá tartozó kölcsönzés és egyedkapcsolat törlődik, így java oldalról ezzel nincs különösebb dolgunk. Az egyedi azonosítók generálása auto-inkrementálással megy melyet az elkészült Movie objektumba bele is tudunk azonnal írni.

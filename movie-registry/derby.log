@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sat May 06 23:10:42 CEST 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015b-df99-ab4d-000005e55d60 
+Sun May 07 15:47:40 CEST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015b-e32a-6e02-0000060f9088 
 on database directory D:\Git\elte-progtech-2\movie-registry\src\main\resources\database\localdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/alexa/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
 java.vendor=Oracle Corporation

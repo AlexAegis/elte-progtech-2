@@ -104,9 +104,4 @@ public class MovieCache extends Cache {
         }
         this.movies = movies;
     }
-
-    public boolean contains(Movie movie) {
-        update();
-        return movies.contains(movie);
-    }
 }
